@@ -8,7 +8,7 @@ public Padres(String Nombre, String Apellido1, String Apellido2,String Nacionali
     this.Apellido1 = Apellido1;
     this.Apellido2 = Apellido2;
     this.Nacionalidad = Nacionalidad;
-    this.Edad = Edad; //ghgiujhgn
+    this.Edad = Edad; 
 }
 
 //Constructor para cuando el padre tiene solo un apellido
@@ -41,24 +41,24 @@ public int getEdad(){
 }
 
 //Setters para los atributos 
-public static void setNombre(String Nombre){
+public void setNombre(String Nombre){
     this.Nombre = Nombre;
 }
 
-public static void setApellido1(String Apellido1){
+public void setApellido1(String Apellido1){
     this.Apellido1 = Apellido1;
 }
 
-public static void setNombre(String Apellido2){
+public void setApellido2 (String Apellido2){
     this.Apellido2 = Apellido2;
 }
 
-public static void setNombre(String Nacionalidad){
+public void setNacionalidad (String Nacionalidad){
     this.Nacionalidad = Nacionalidad;
 }
 
-public static void setEdad(int edad){
+public void setEdad(int Edad){
     this.Edad = Edad;
 }
-
+//tttgg
 }
