@@ -60,5 +60,4 @@ public void setNacionalidad (String Nacionalidad){
 public void setEdad(int Edad){
     this.Edad = Edad;
 }
-//tttgg
 }
