@@ -52,8 +52,8 @@ public class Niño {
 
         //Variables para cada digito y una de alcenamiento temporal
         char Digito1 = 'A', Digito2 = '0', temp;
-        //Cadena uqe contiene todas las letras que vamos a usar (25)
-        final String Abecadrio = "ABCDEFGHIJKLMNOPQRSTUVWXZ";
+        //Cadena uqe contiene todas las letras que vamos a usar (26)
+        final String Abecadrio = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         for (int i = 1; i < 3; i++) {
             int ran = (int) (Math.random() * (2));//Num. 0-1
@@ -64,7 +64,7 @@ public class Niño {
                 temp = (char) (int) (Math.random() * (10));
             } else {
                 //Seleciona un numero al azar de 0-24
-                ran = (int) (Math.random() * (25));
+                ran = (int) (Math.random() * (26));
                 //Se le accigna un carcter de la cadena abecedario con base al num. aleatorio  
                 temp = Abecadrio.charAt(ran);
             }
