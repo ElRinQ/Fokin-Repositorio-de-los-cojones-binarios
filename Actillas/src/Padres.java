@@ -8,7 +8,7 @@ public Padres(String Nombre, String Apellido1, String Apellido2,String Nacionali
     this.Apellido1 = Apellido1;
     this.Apellido2 = Apellido2;
     this.Nacionalidad = Nacionalidad;
-    this.Edad = Edad;
+    this.Edad = Edad; //ghgiujhgn
 }
 
 //Constructor para cuando el padre tiene solo un apellido
