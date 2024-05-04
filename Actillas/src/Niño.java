@@ -5,7 +5,7 @@ public class Niño {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
 
-    private String Nombre, Apellido1, Apellido2, FechaNaci, Localidad, Municipio, Estado, Pais;
+    private String Nombre, Apellido1, Apellido2, FechaNaci, Localidad, Municipio, Estado, Pais, Curp, HomoClave;
     private char Sexo;
     private boolean Registrado;
     private int Dia, Mes, Año;
@@ -25,7 +25,7 @@ public class Niño {
         this.Municipio = Municipio;
         this.Pais = Pais;
         this.Sexo = Sexo;
-       
+
     }
 
     // Constructor para cuando tiene solo un padre
@@ -42,6 +42,43 @@ public class Niño {
         this.Pais = Pais;
         this.Sexo = Sexo;
         this.Registrado = Registrado;
+    }
+
+    public void GenerarCurp(Niño registrando) {
+
+    }
+
+    public void GenerarHomoClave() {
+
+        //Variables para cada digito y una de alcenamiento temporal
+        char Digito1 = 'A', Digito2 = '0', temp;
+        //Cadena uqe contiene todas las letras que vamos a usar (25)
+        final String Abecadrio = "ABCDEFGHIJKLMNOPQRSTUVWXZ";
+
+        for (int i = 1; i < 3; i++) {
+            int ran = (int) (Math.random() * (2));//Num. 0-1
+
+            //Aqui segun el resultado "ran" se determina si sera un careter numerico o alfabetico
+            if (ran == 0) {
+                //Selecciona un numero al azar de 0-9
+                temp = (char) (int) (Math.random() * (10));
+            } else {
+                //Seleciona un numero al azar de 0-24
+                ran = (int) (Math.random() * (25));
+                //Se le accigna un carcter de la cadena abecedario con base al num. aleatorio  
+                temp = Abecadrio.charAt(ran);
+            }
+            
+            //Agina los valores de "temp" a los digitos
+            if (i == 1) {
+                Digito1 = temp;
+            } else {
+                Digito2 = temp;
+            }
+        }//Fin del For 
+        
+        //Se covierten los caracteres a cadena y se asigna valor a la homoclave
+        this.HomoClave = String.valueOf(Digito1)+String.valueOf(Digito2);
     }
 
     // Getters
@@ -97,5 +134,8 @@ public class Niño {
         return Año;
     }
 
+    public String getCurp() {
+        return Curp;
+    }
 
 }
