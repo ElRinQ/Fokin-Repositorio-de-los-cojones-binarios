@@ -5,9 +5,9 @@ public class Niño {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
 
-    private String Nombre, Apellido1, Apellido2, FechaNaci, Localidad, Municipio, Estado, Pais, Curp, HomoClave;
+    private String Nombre, Apellido1, Apellido2 = null, FechaNaci, Localidad, Municipio, Estado, Pais, Curp, HomoClave;
     private char Sexo;
-    private boolean Registrado;
+    private boolean Registrado, DosTutores;
     private int Dia, Mes, Año;
 
     // Constructor para cuando tine 2 padres
@@ -25,11 +25,12 @@ public class Niño {
         this.Municipio = Municipio;
         this.Pais = Pais;
         this.Sexo = Sexo;
+        this.DosTutores = true;
 
     }
 
     // Constructor para cuando tiene solo un padre
-    public Niño(Padres Soltero, String Nombre, String Localidad, String Municipio,
+    public Niño(Padres Soltero, String Nombre, String Localidad, String Municipio, String Estado,
             String Pais, char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
         this.Nombre = Nombre;
         this.Apellido1 = Soltero.getApellido1();
@@ -42,9 +43,12 @@ public class Niño {
         this.Pais = Pais;
         this.Sexo = Sexo;
         this.Registrado = Registrado;
+        this.DosTutores = false;
     }
 
     public void GenerarCurp(Niño registrando) {
+        //si no hay segundo apellido se llena el espacio conuna x
+        //si se llama jose o maria, se toma en cuenta el segundo nombre en lugar del primero
 
     }
 
