@@ -63,8 +63,8 @@ public class Niño {
             //Captura la vocal del apellido
             for (int i = 0; i < Apellido1.length(); i++) {
                char L = Apellido1.charAt(i);
-               if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U'){
-                c2 = L;
+               if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
+                c2 = Character.toUpperCase(L);
                 break;
                }
             }
@@ -81,7 +81,7 @@ public class Niño {
             for (int i = 0; i < Apellido1.length(); i++) {
                 char L = Apellido1.charAt(i);
                 if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){//Busca Consonantes excluyendo vocales
-                 c14 = L;
+                 c14 = Character.toUpperCase(L);
                  break;
                 }
             }
@@ -89,15 +89,15 @@ public class Niño {
             for (int i = 0; i < Apellido2.length(); i++) {
                 char L = Apellido2.charAt(i);
                 if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){
-                 c15 = L;
+                 c15 = Character.toUpperCase(L);
                  break;
                 }
             }
             char c16 = 0;
             for (int i = 0; i < Nombre.length(); i++) {
                 char L = Nombre.charAt(i);
-                if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){
-                 c16 = L;
+                if(L != 'A' || L != 'E' || L != 'I' || L != 'O' || L != 'U'){
+                 c16 = Character.toUpperCase(L);
                 }else{
                     c16 = 'X';
                  
@@ -110,10 +110,10 @@ public class Niño {
             char c1 = Apellido1.charAt(0);
             char c2 = 0;
             //Captura la vocal del apellido
-            for (int i = 0; i < Apellido1.length(); i++) {
+            for (int i = 1; i < Apellido1.length(); i++) {
                char L = Apellido1.charAt(i);
-               if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U'){
-                c2 = L;
+               if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U' || L == 'a'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
+                c2 = Character.toUpperCase(L);
                 break;
                }
             }
@@ -130,7 +130,7 @@ public class Niño {
             for (int i = 0; i < Apellido1.length(); i++) {
                 char L = Apellido1.charAt(i);
                 if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){//Busca Consonantes excluyendo vocales
-                 c14 = L;
+                 c14 = Character.toUpperCase(L);
                  break;
                 }
             }
@@ -138,15 +138,15 @@ public class Niño {
             for (int i = 0; i < Apellido2.length(); i++) {
                 char L = Apellido2.charAt(i);
                 if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){
-                 c15 = L;
+                 c15 = Character.toUpperCase(L);
                  break;
                 }
             }
             char c16 = 0;
             for (int i = 0; i < Nombre.length(); i++) {
                 char L = Nombre.charAt(i);
-                if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){
-                 c16 = L;
+                if(L == 'A' || L == 'E' || L == 'I' || L == 'O' || L == 'U'){
+                 c16 = Character.toUpperCase(L);
                 }else{
                     c16 = 'X';
                  break;
@@ -292,7 +292,7 @@ public class Niño {
         } // Fin del For
 
         // Se covierten los caracteres a cadena y se asigna valor a la homoclave
-        this.HomoClave = String.valueOf(Digito1) + String.valueOf(Digito2);
+        this.HomoClave = String.valueOf(Digito1)+ "" + String.valueOf(Digito2);
     }
 
     // Getters
@@ -309,7 +309,7 @@ public class Niño {
 
     public void EntiedadFederativa(){
 
-        switch (Estado.toLowerCase()) {
+        switch (Estado) {
             case "Aguas Calientes" :
                 a = 'A';
                 b = 'C';
