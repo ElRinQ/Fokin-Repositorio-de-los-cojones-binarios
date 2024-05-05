@@ -9,10 +9,10 @@ Padres P4 = new Padres("Liliana","Quiroga","Crecer","",24);
 Niño N1 = new Niño(P1,P2, "Noe", "Hermosillo", "Hermosillo", "Sonora", 'H', true, 11, 8, 2005);
 Niño N2 = new Niño(P3, P4, "Jorge", "Hermosillo", "Hermosillo", "Sonora", 'H', true, 11, 10, 2004);
 N1.GenerarCurp(N1);
-<<<<<<< HEAD
-N2.GenerarCurp(N2);
-=======
 
->>>>>>> 2cbb4614f41c0a31252c67456b22f8494c99c9c0
+N2.GenerarCurp(N2);
+
+
+
 }
 }
