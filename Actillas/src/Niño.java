@@ -49,7 +49,110 @@ public class Niño {
         // si se llama jose o maria, se toma en cuenta el segundo nombre en lugar del
         // primero
         // El plan es que se ejecute distinto segun si tiene o no dos padres
+        // Para las claves de los estados usaremos la primera letra y la ultima
+        // consonante
 
+    }
+
+    public char SelctorDeLetra(String Palabra, int Modalidad) {
+        char LetraSelecionada = '#';
+        final String Vocales = "AEIOUaeiouáéíóúü";// Vocales y sus variantes
+        final String Consonantes = "BCDFGHJKLMNÑOPQRSTVWXYZbcdfghjklmnñpqrstvwxyz";// Consonantes y sus variables
+        final String Abecedrio = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZbcdfghjklmnñpqrstvwxyzaeiouáéíóúü";// Abecedario con
+                                                                                                // variantes
+        int contador = 0;
+
+        switch (Modalidad) {
+
+            case 1:// Primera Letra
+                boolean EsLet = false;
+                // El bucle sigira hasta encontrar una letra o que no haya mas caracteres para
+                // evaluar
+                do {
+                    // Se seleciona la letra que vamos a evaluar
+                    LetraSelecionada = Palabra.charAt(contador);
+                    for (int i = 0; i < Abecedrio.length(); i++) {
+                        // Se comprueba que este en el abecedario
+                        if (LetraSelecionada == Abecedrio.charAt(i)) {
+                            EsLet = true;
+                        }
+                    }
+
+                    contador++;
+                } while ((EsLet == false) && (contador < Palabra.length()));
+
+                break;
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            case 2:// Primer Consonante Interna
+                boolean ConIn = false;
+                // El bucle sigira hasta encontrar una consonante o que no haya mas caracteres
+                // para evaluar
+                do {
+                    // Este if confirma que la palabra tenga mas de una letra
+                    if (Palabra.length() <= contador + 1) {
+                        // Se asigna esa unica letra como valor de retorno
+                        LetraSelecionada = Palabra.charAt(contador);
+                        ConIn = true;
+                    } else {
+                        // Se seleciona la letra que vamos a evaluar
+                        LetraSelecionada = Palabra.charAt(contador + 1);
+                        for (int i = 0; i < Consonantes.length(); i++) {
+                            // Se evalua que sea consonante
+                            if (LetraSelecionada == Consonantes.charAt(i)) {
+                                ConIn = true;
+                            }
+                        }
+                    }
+                    contador++;
+                } while ((ConIn == false) && (contador < Palabra.length()));
+
+                break;
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            case 3:// Primera vocal interna
+                boolean VoIn = false;
+                do {
+                    // Este if confirma uqe la palabra tenga mas de una letra
+                    if (Palabra.length() <= contador + 1) {
+                        LetraSelecionada = Palabra.charAt(contador);
+                        VoIn = true;
+                    } else {
+                        // Se seleciona la letra que vamos a evaluar
+                        LetraSelecionada = Palabra.charAt(contador + 1);
+                        for (int i = 0; i < Vocales.length(); i++) {
+                            // Se evalua que sea vocal
+                            if (LetraSelecionada == Vocales.charAt(i)) {
+                                VoIn = true;
+                            }
+                        }
+                    }
+                    contador++;
+                } while ((VoIn == false) && (contador < Palabra.length()));
+                break;
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            case 4://Ultima consonante
+                //La variable UltimaCons Almacena la ultimima consonante de la palabra evaluada
+                char UltimaCons = Palabra.charAt(contador);
+                do {
+                    boolean EsCon = false;//Esta variable evita que se pierda tiempo
+                    LetraSelecionada = Palabra.charAt(contador);
+                    for (int i = 0; (i < Consonantes.length()) && EsCon == false; i++) {
+                        //Se confirma que la letra sea una consonante
+                        if (LetraSelecionada == Consonantes.charAt(i)) {
+                            UltimaCons = LetraSelecionada;//Se copea la consonante
+                            EsCon = true;
+                        }
+                    }
+                    LetraSelecionada = UltimaCons;//Se pone la ultima cons para el retorno
+                    contador++;
+                } while ((contador < Palabra.length()));
+                break;
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            default:// Primera Caracter
+                LetraSelecionada = Palabra.charAt(0);
+                break;
+        }
+
+        return LetraSelecionada;
     }
 
     public void GenerarHomoClave() {
@@ -57,7 +160,7 @@ public class Niño {
         // Variables para cada digito y una de alcenamiento temporal
         char Digito1 = 'A', Digito2 = '0', temp;
         // Cadena uqe contiene todas las letras que vamos a usar (26)
-        final String Abecadrio = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        final String Abecedrio = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         for (int i = 1; i < 3; i++) {
             int ran = (int) (Math.random() * (2));// Num. 0-1
@@ -68,10 +171,10 @@ public class Niño {
                 // Selecciona un numero al azar de 0-9
                 temp = (char) (int) (Math.random() * (10));
             } else {
-                // Seleciona un numero al azar de 0-24
+                // Seleciona un numero al azar de 0-25
                 ran = (int) (Math.random() * (26));
                 // Se le accigna un carcter de la cadena abecedario con base al num. aleatorio
-                temp = Abecadrio.charAt(ran);
+                temp = Abecedrio.charAt(ran);
             }
 
             // Agina los valores de "temp" a los digitos
