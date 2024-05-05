@@ -24,6 +24,7 @@ public class Niño {
         this.Registrado = Registrado;
         this.Dia = Dia;
         this.Mes = Mes;
+        DosC.format(Mes);
         this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
@@ -105,7 +106,7 @@ public class Niño {
                 }
             }
                 GenerarHomoClave();
-            System.out.println(c1 + "" + c2 + "" + "x" + "" + c4 + "" + c5 + "" + c6 + "" + Mes + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + HomoClave);
+            System.out.println(c1 + "" + c2 + "" + "x" + "" + c4 + "" + c5 + "" + c6 + "" + Mes + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + this.HomoClave);
         }else{
             char c1 = Apellido1.charAt(0);
             char c2 = 0;
@@ -127,17 +128,17 @@ public class Niño {
             char c12 = a;
             char c13 = b;
             char c14 = 0;
-            for (int i = 0; i < Apellido1.length(); i++) {
+            for (int i = 2; i < Apellido1.length(); i++) {
                 char L = Apellido1.charAt(i);
-                if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){//Busca Consonantes excluyendo vocales
+                if(L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u'){//Busca Consonantes excluyendo vocales
                  c14 = Character.toUpperCase(L);
                  break;
                 }
             }
             char c15 = 0;
-            for (int i = 0; i < Apellido2.length(); i++) {
+            for (int i = 1; i < Apellido2.length(); i++) {
                 char L = Apellido2.charAt(i);
-                if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){
+                if(L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u'){
                  c15 = Character.toUpperCase(L);
                  break;
                 }
@@ -145,7 +146,7 @@ public class Niño {
             char c16 = 0;
             for (int i = 0; i < Nombre.length(); i++) {
                 char L = Nombre.charAt(i);
-                if(L == 'A' || L == 'E' || L == 'I' || L == 'O' || L == 'U'){
+                if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U' || L == 'a'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
                  c16 = Character.toUpperCase(L);
                 }else{
                     c16 = 'X';
@@ -153,7 +154,7 @@ public class Niño {
                 }
             }
                 GenerarHomoClave();
-            System.out.println(c1 + "" + c2 + "" + c3 + "" + c4 + "" + c5 + "" + c6 + "" + Mes + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + HomoClave);
+            System.out.println(c1 + "" + c2 + "" + c3 + "" + c4 + "" + c5 + "" + c6 + "" + Mes + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + this.HomoClave);
         }
 
         // Para las claves de los estados usaremos la primera letra y la ultima
@@ -292,7 +293,7 @@ public class Niño {
         } // Fin del For
 
         // Se covierten los caracteres a cadena y se asigna valor a la homoclave
-        this.HomoClave = String.valueOf(Digito1)+ "" + String.valueOf(Digito2);
+        HomoClave = String.valueOf(Digito1).concat(String.valueOf(Digito2)) ;
     }
 
     // Getters
@@ -310,162 +311,162 @@ public class Niño {
     public void EntiedadFederativa(){
 
         switch (Estado) {
-            case "Aguas Calientes" :
+            case "Aguas Calientes" , "aguas calientes" :
                 a = 'A';
                 b = 'C';
                 break;
 
-                case "Baja California" :
+                case "Baja California" , "baja california" :
                 a = 'B';
                 b = 'C';
                 break;
                                 
-                case "Coahuila" :
+                case "Coahuila" , "cohahuila" :
                 a = 'C';
                 b = 'L';
                 break;
                                 
-                case "Chiapas" :
+                case "Chiapas" , "chiapas":
                 a = 'C';
                 b = 'S';
                 break;
                                 
-                case "Campeche" :
+                case "Campeche" , "campeche":
                 a = 'C';
                 b = 'C';
                 break;
                                 
-                case "Colima" :
+                case "Colima" , "colima" :
                 a = 'C';
                 b = 'M';
                 break;
                                 
-                case "Chihuahua" :
+                case "Chihuahua" , "chihuahua" :
                 a = 'C';
                 b = 'H';
                 break;
                                 
-                case "Distrito Federal " :
+                case "Distrito Federal" , "distrito federal" :
                 a = 'D';
                 b = 'F';
                 break;
                                 
-                case "Durango" :
+                case "Durango" , "durango" :
                 a = 'D';
                 b = 'G';
                 break;
                                 
-                case "Guanajuato" :
+                case "Guanajuato" , "guanajuato" :
                 a = 'G';
                 b = 'T';
                 break;
                                 
-                case "Guerrero" :
+                case "Guerrero", "guerrero" :
                 a = 'G';
                 b = 'R';
                 break;
                                 
-                case "Hidalgo" :
+                case "Hidalgo", "hidalgo" :
                 a = 'H';
                 b = 'G';
                 break;
                                 
-                case "Jalisco" :
+                case "Jalisco" , "jalisco" :
                 a = 'J';
                 b = 'C';
                 break;
                                 
-                case "Mexico" :
+                case "Mexico" , "mexico":
                 a = 'M';
                 b = 'C';
                 break;
                                 
-                case "Michoacan" :
+                case "Michoacan" , "michoacan":
                 a = 'M';
                 b = 'N';
                 break;
                                 
-                case "Nuevo Leon" :
+                case "Nuevo Leon" , "nuevo leon" :
                 a = 'N';
                 b = 'L';
                 break;
                                 
-                case "Morelos" :
+                case "Morelos" , "morelos" :
                 a = 'M';
                 b = 'S';
                 break;
                                 
-                case "Nayarit" :
+                case "Nayarit" , "nayarit":
                 a = 'N';
                 b = 'T';
                 break;
                                 
-                case "Oaxaca" :
+                case "Oaxaca" , "oaxaca" :
                 a = 'O';
                 b = 'C';
                 break;
                                 
-                case "Puebla" :
+                case "Puebla" , "puebla" :
                 a = 'P';
                 b = 'L';
                 break;
                                 
-                case "Queretaro" :
+                case "Queretaro" , "queretaro":
                 a = 'Q';
                 b = 'T';
                 break;
                                 
-                case "Quintanaroo" :
+                case "Quintanaroo" , "quintanaroo" :
                 a = 'Q';
                 b = 'R';
                 break;
                                 
-                case "San Luis Potosi" :
+                case "San Luis Potosi" , "san luis potosi" :
                 a = 'S';
                 b = 'P';
                 break;
                                 
-                case "Sinaloa" :
+                case "Sinaloa" , "sinaloa":
                 a = 'S';
                 b = 'L';
                 break;
                                 
-                case "Sonora" :
+                case "Sonora" , "sonora" :
                 a = 'S';
                 b = 'R';
                 break;
                                 
-                case "Tlaxcala" :
+                case "Tlaxcala" , "tlaxcala" :
                 a = 'T';
                 b = 'L';
                 break;
                                 
-                case "Tabasco" :
+                case "Tabasco" , "tabasco" :
                 a = 'T';
                 b = 'C';
                 break;
                                 
-                case "Tamaulipas" :
+                case "Tamaulipas" , "tamaulipas" :
                 a = 'T';
                 b = 'S';
                 break;
                                 
-                case "Veracruz" :
+                case "Veracruz" , "veracruz" :
                 a = 'V';
                 b = 'Z';
                 break;
                                 
-                case "Yucatan" :
+                case "Yucatan" , "yucatan":
                 a = 'Y';
                 b = 'N';
                 break;
                                 
-                case "Zacatecas" :
+                case "Zacatecas" , "zacatecas" :
                 a = 'Z';
                 b = 'S';
                 break;
                                 
-                case "Nacido en el extrangero" :
+                case "Nacido en el extrangero" , "extrangero", "nacido en el extrangero" :
                 a = 'N';
                 b = 'E';
                 break;
