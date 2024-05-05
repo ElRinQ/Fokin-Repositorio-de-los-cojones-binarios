@@ -10,14 +10,17 @@ public class Niño {
     private boolean Registrado, DosTutores;
     private int Dia,Mes, Año;
     protected char a,b;
+    protected Padres Padre1, Padre2;
    
     
     // Constructor para cuando tine 2 padres
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
-            char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
+            char sexo, boolean Registrado, int Dia, int Mes, int Año) {
         this.Nombre = Nombre;
         this.Apellido1 = Papa.getApellido1();
+        Padre1 = Papa;
         this.Apellido2 = Mama.getApellido1();
+        Padre2 = Mama;
         this.Registrado = Registrado;
         this.Dia = Dia;
         MesNum();
@@ -26,15 +29,13 @@ public class Niño {
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
-        this.Sexo = Sexo;
+        this.Sexo = sexo;
         this.DosTutores = true;
-        
-
     }
 
     // Constructor para cuando tiene solo un padre
     public Niño(Padres Soltero, String Nombre, String Localidad, String Municipio, String Estado,
-            char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
+            char sexo, boolean Registrado, int Dia, int Mes, int Año) {
         this.Nombre = Nombre;
         this.Apellido1 = Soltero.getApellido1();
         this.Dia = Dia;
@@ -44,7 +45,7 @@ public class Niño {
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
-        this.Sexo = Sexo;
+        this.Sexo = sexo;
         this.Registrado = Registrado;
         this.DosTutores = false;
     }
@@ -54,7 +55,7 @@ public class Niño {
         // si se llama jose o maria, se toma en cuenta el segundo nombre en lugar del
         // primero
         // El plan es que se ejecute distinto segun si tiene o no dos padres
-<<<<<<< HEAD
+
         if (registrando.DosTutores == false){
             //Captura el primer caracter del apeliido
             char c1 = Apellido1.charAt(0);
@@ -154,11 +155,9 @@ public class Niño {
                 GenerarHomoClave();
             System.out.println(c1 + "" + c2 + "" + c3 + "" + c4 + "" + c5 + "" + c6 + "" + Mes + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + HomoClave);
         }
-=======
+
         // Para las claves de los estados usaremos la primera letra y la ultima
         // consonante
-
->>>>>>> e59b9f59d12df5247238ac20e47a52478b6ab4a9
     }
 
     public char SelctorDeLetra(String Palabra, int Modalidad) {
@@ -470,7 +469,6 @@ public class Niño {
                 a = 'N';
                 b = 'E';
                 break;
-       
         }
     }
 
