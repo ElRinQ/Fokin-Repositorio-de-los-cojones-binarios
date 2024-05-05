@@ -23,12 +23,12 @@ public class Niño {
         Padre2 = Mama;
         this.Registrado = Registrado;
         this.Dia = Dia;
-        MesNum();
         this.Mes = Mes;
         this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
+        this.Estado = Estado;
         this.Sexo = sexo;
         this.DosTutores = true;
     }
