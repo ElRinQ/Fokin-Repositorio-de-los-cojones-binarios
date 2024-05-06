@@ -9,7 +9,7 @@ public class Niño {
     private char Sexo;
     private boolean Registrado, DosTutores;
     private int Dia, Mes, Año;
-    protected char a, b;
+    
 
     // Constructor para cuando tine 2 padres
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
@@ -51,9 +51,10 @@ public class Niño {
     }
 
     public void GenerarCurp() {
+        //Este Metodo se encarga de recopilar los datos necerios para una curp y unirlos
         this.GenerarHomoClave();
         if (DosTutores == true) {
-
+            //Caso en que tiene 2 tutores todo se puede llenar correctamente
             this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3)
                     + this.SelctorDeLetra(this.getApellido2(), 1) + "" + this.SelctorDeLetra(this.getNombre(), 1) + ""
                     + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
@@ -64,6 +65,7 @@ public class Niño {
                     + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
 
         } else {
+            //Caso en el que tiene solo uno, los datos que no pueden ser llenados se remplazan por X
             this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3)
                     + "X" + this.SelctorDeLetra(this.getNombre(), 1) + ""
                     + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
@@ -178,13 +180,15 @@ public class Niño {
                 break;
             /////////////////////////////////////////////////////////////////////////////////////////////////
             case 5:// Ultimo Caracteres
+                //Toma el largo de la cadena y se va por el ultimo carracter
                 LetraSelecionada = Palabra.charAt(Palabra.length() - 1);
                 break;
-            case 6:
+            case 6://Penultimo Caracter
+                //Toma el largo de la cadena y devuelve el penultimo caracter
                 if (Palabra.length() > 1) {
                     LetraSelecionada = Palabra.charAt(Palabra.length() - 2);
                 } else {
-                    LetraSelecionada = Palabra.charAt(0);
+                    LetraSelecionada = Palabra.charAt(0);//Caso de 1 caracter nomas
                 }
                 break;
             default:// Primera Caracter

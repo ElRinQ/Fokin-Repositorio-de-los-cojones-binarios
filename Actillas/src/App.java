@@ -2,6 +2,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
+
         Padres P1 = new Padres("Andres", "Segura","Gonzalez", "Mexicana", 32);
         Padres P2 = new Padres("Veronica", "Ocaño", "Marin", "Mexicana", 26);
         Padres P3 = new Padres("Luis","Mendez","Salazar","Mexicana", 54);
@@ -10,5 +11,6 @@ public class App {
         Niño N2 = new Niño(P4, "Jorge", "Hermosillo", "Hermosillo", "Sonora", 'H', true, 11, 10, 2004);
                 System.out.println(N1.getCurp());
                 System.out.println(N2.getCurp());
-}
-}
+
+                
+}}
