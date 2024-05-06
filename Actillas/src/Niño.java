@@ -39,12 +39,15 @@ public class Niño {
             char sexo, boolean Registrado, int Dia, int Mes, int Año) {
         this.Nombre = Nombre;
         this.Apellido1 = Soltero.getApellido1();
+        Padre1 = Soltero;
         this.Dia = Dia;
         this.Mes = Mes;
+        DosC.format(Mes);
         this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
+        this.Estado = Estado;
         this.Sexo = sexo;
         this.Registrado = Registrado;
         this.DosTutores = false;
@@ -61,7 +64,7 @@ public class Niño {
             char c1 = Apellido1.charAt(0);
             char c2 = 0;
             //Captura la vocal del apellido
-            
+
             for (int i = 0; i < Apellido1.length(); i++) {
                char L = Apellido1.charAt(i);
                if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
@@ -76,6 +79,10 @@ public class Niño {
             String Ano = String.valueOf(Año);
             char c5 = Ano.charAt(2);
             char c6 = Ano.charAt(3);
+            
+            MesNum();
+            char c7 = Decada;
+            char c8 = Anualidad;
 
             //Llamamos al metodo entidad federativa para que lea el estado y nos diga su abreviacion6
 
@@ -93,15 +100,6 @@ public class Niño {
                 }
             }
 
-            char c15 = 0;
-            for (int i = 1; i < Apellido2.length(); i++) {
-                char L = Apellido2.charAt(i);
-                if(L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u'){
-                 c15 = Character.toUpperCase(L);
-                 break;
-                }
-            }
-
             char c16 = 0;
             for (int i = 1; i < Nombre.length(); i++) {
                 char L = Nombre.charAt(i);
@@ -114,7 +112,7 @@ public class Niño {
                 }
             }
                 GenerarHomoClave();
-            System.out.println(c1 + "" + c2 + "" + "x" + "" + c4 + "" + c5 + "" + c6 + "" + Mes + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + this.HomoClave);
+            System.out.println(c1 + "" + c2 + "" + 'X' + "" + c4 + "" + c5 + "" + c6 + "" + c7 + "" + c8 + "" + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + 'X'+ "" + c16 + "" + this.HomoClave);
         }else{
             char c1 = Apellido1.charAt(0);
             char c2 = 0;
