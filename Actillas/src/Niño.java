@@ -9,7 +9,7 @@ public class Niño {
     private char Sexo;
     private boolean Registrado, DosTutores;
     private int Dia,Mes, Año;
-    protected char a,b;
+    protected char a,b , Decada , Anualidad;
     protected Padres Padre1, Padre2;
    
     
@@ -40,7 +40,6 @@ public class Niño {
         this.Nombre = Nombre;
         this.Apellido1 = Soltero.getApellido1();
         this.Dia = Dia;
-        MesNum();
         this.Mes = Mes;
         this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
@@ -62,6 +61,7 @@ public class Niño {
             char c1 = Apellido1.charAt(0);
             char c2 = 0;
             //Captura la vocal del apellido
+            
             for (int i = 0; i < Apellido1.length(); i++) {
                char L = Apellido1.charAt(i);
                if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
@@ -70,15 +70,21 @@ public class Niño {
                }
             }
             char c4 = Nombre.charAt(0);
+
             //Como no hay segundo apellido se genera una x en su ausencia
+
             String Ano = String.valueOf(Año);
             char c5 = Ano.charAt(2);
             char c6 = Ano.charAt(3);
+
             //Llamamos al metodo entidad federativa para que lea el estado y nos diga su abreviacion6
+
             EntiedadFederativa();
+
             char c12 = a;
             char c13 = b;
             char c14 = 0;
+
             for (int i = 0; i < Apellido1.length(); i++) {
                 char L = Apellido1.charAt(i);
                 if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){//Busca Consonantes excluyendo vocales
@@ -86,23 +92,25 @@ public class Niño {
                  break;
                 }
             }
+
             char c15 = 0;
-            for (int i = 0; i < Apellido2.length(); i++) {
+            for (int i = 1; i < Apellido2.length(); i++) {
                 char L = Apellido2.charAt(i);
-                if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){
+                if(L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u'){
                  c15 = Character.toUpperCase(L);
                  break;
                 }
             }
+
             char c16 = 0;
-            for (int i = 0; i < Nombre.length(); i++) {
+            for (int i = 1; i < Nombre.length(); i++) {
                 char L = Nombre.charAt(i);
-                if(L != 'A' || L != 'E' || L != 'I' || L != 'O' || L != 'U'){
-                 c16 = Character.toUpperCase(L);
+                if (L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u') {
+                    c16 = Character.toUpperCase(L);
+                    break;
                 }else{
                     c16 = 'X';
-                 
-                 break;
+
                 }
             }
                 GenerarHomoClave();
@@ -123,6 +131,9 @@ public class Niño {
             String Ano = String.valueOf(Año);
             char c5 = Ano.charAt(2);
             char c6 = Ano.charAt(3);
+            MesNum();
+            char c7 = Decada;
+            char c8 = Anualidad;
             //Llamamos al metodo entidad federativa para que lea el estado y nos diga su abreviacion6
             EntiedadFederativa();
             char c12 = a;
@@ -144,17 +155,25 @@ public class Niño {
                 }
             }
             char c16 = 0;
-            for (int i = 0; i < Nombre.length(); i++) {
+            for (int i = 1; i < Nombre.length(); i++) {
                 char L = Nombre.charAt(i);
-                if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U' || L == 'a'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
-                 c16 = Character.toUpperCase(L);
+                if (L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u') {
+                    c16 = Character.toUpperCase(L);
+                    break;
                 }else{
                     c16 = 'X';
-                 break;
+
                 }
             }
+            
+            
+            // Si ninguna consonante se encuentra en el nombre, asignamos 'X' a c16
+            if (c16 == 0) {
+                c16 = 'X';
+            }
+            
                 GenerarHomoClave();
-            System.out.println(c1 + "" + c2 + "" + c3 + "" + c4 + "" + c5 + "" + c6 + "" + Mes + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + this.HomoClave);
+            System.out.println(c1 + "" + c2 + "" + c3 + "" + c4 + "" + c5 + "" + c6 + "" + c7 + "" + c8 + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + this.HomoClave);
         }
 
         // Para las claves de los estados usaremos la primera letra y la ultima
@@ -268,24 +287,27 @@ public class Niño {
         char Digito1 = 'A', Digito2 = '0', temp;
         // Cadena uqe contiene todas las letras que vamos a usar (26)
         final String Abecedrio = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        final String Numeros = "0123456789";
 
-        for (int i = 1; i < 3; i++) {
-            int ran = (int) (Math.random() * (2));// Num. 0-1
+        for (int i = 0; i < 2; i++) {
+            int ran = (int) (Math.random() * (3));// Num. 0-2
 
             // Aqui segun el resultado "ran" se determina si sera un careter numerico o
             // alfabetico
-            if (ran == 0) {
+            if (ran >= 1) {
                 // Selecciona un numero al azar de 0-9
-                temp = (char) (int) (Math.random() * (10));
+                ran = (int) (Math.random() * (10));
+                // Se selecciona un carcter de la cadena Numeros con base al num. aleatorio
+                temp = Numeros.charAt(ran);
             } else {
                 // Seleciona un numero al azar de 0-25
                 ran = (int) (Math.random() * (26));
-                // Se le accigna un carcter de la cadena abecedario con base al num. aleatorio
+                // Se selecciona un carcter de la cadena abecedario con base al num. aleatorio
                 temp = Abecedrio.charAt(ran);
             }
 
             // Agina los valores de "temp" a los digitos
-            if (i == 1) {
+            if (i == 0) {
                 Digito1 = temp;
             } else {
                 Digito2 = temp;
@@ -293,7 +315,7 @@ public class Niño {
         } // Fin del For
 
         // Se covierten los caracteres a cadena y se asigna valor a la homoclave
-        HomoClave = String.valueOf(Digito1).concat(String.valueOf(Digito2)) ;
+        this.HomoClave = String.valueOf(Digito1).concat(String.valueOf(Digito2));
     }
 
     // Getters
@@ -473,47 +495,57 @@ public class Niño {
         }
     }
 
-    public void MesNum(){
+    public void MesNum() {
         switch (Mes) {
             case 1:
-            Mes = Integer.parseInt("01");   
+                Decada = '0';
+                Anualidad = '1';
                 break;
             case 2:
-            Mes = Integer.parseInt("02");   
+                Decada = '0';
+                Anualidad = '2';
                 break;
             case 3:
-            Mes = Integer.parseInt("03");    
+                Decada = '0';
+                Anualidad = '3';
                 break;
             case 4:
-                Mes = Integer.parseInt("04");    
+                Decada = '0';
+                Anualidad = '4';
                 break;
             case 5:
-                Mes = Integer.parseInt("05");    
+                Decada = '0';
+                Anualidad = '5';
                 break;
             case 6:
-            Mes = Integer.parseInt("06");    
+                Decada = '0';
+                Anualidad = '6';
                 break;
             case 7:
-            Mes = Integer.parseInt("07");   
+                Decada = '0';
+                Anualidad = '7';
                 break;
             case 8:
-            Mes = Integer.parseInt("08");  
+                Decada = '0';
+                Anualidad = '8';
                 break;
             case 9:
-            Mes = Integer.parseInt("09");   
+                Decada = '0';
+                Anualidad = '9';
                 break;
             case 10:
-            Mes = Integer.parseInt("10");    
+                Decada = '1';
+                Anualidad = '0';
                 break;
             case 11:
-            Mes = Integer.parseInt("11");   
+                Decada = '1';
+                Anualidad = '1';
                 break;
             case 12:
-            Mes = Integer.parseInt("12");    
+                Decada = '1';
+                Anualidad = '2';
                 break;
         }
-    
-
     }
 
     public String getApellidoP(Padres Padre) {
