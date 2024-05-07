@@ -2,16 +2,21 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
-Padres P1 = new Padres("Andres", "Segura","Gonzalez", "Mexicana", 32);
-Padres P2 = new Padres("Veronica", "Ocaño", "Marin", "Mexicana", 26);
-Padres P3 = new Padres("Luis","Mendez","Salazar","Mexicana", 54);
-Padres P4 = new Padres("Liliana","Quiroga","Crecer","",24);
-Niño N1 = new Niño(P1,"Noe", "Hermosillo", "Hermosillo", "Sonora", 'H', true, 11, 8, 2005);
-Niño N2 = new Niño(P3, P4, "Jorge", "Hermosillo", "Hermosillo", "Sonora", 'H', true, 11, 10, 2004);
+Padres P1 = new Padres("Enrique", "Segura", "Romo", 32);
+Padres P2 = new Padres("Ana Alicia", "Gonzalez", "Mendoza", "Mexicana", 26);
+Niño N1 = new Niño();
+Niño N2 = new Niño(P1, P2, "Andres", "Hermosillo", "Hermosillo", "Sonora", 'H', true, 10, 11, 1976);
+
+
+Acta_De_Nacimiento Nueva_Acta_De_Nacimiento = new Acta_De_Nacimiento(N1);
+
+Nueva_Acta_De_Nacimiento.Generar();
+
 N1.GenerarCurp(N1);
 
 N2.GenerarCurp(N2);
 
-
+System.out.println(N1);
+System.out.println(N2);
 }
 }

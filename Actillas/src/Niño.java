@@ -1,21 +1,29 @@
 
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class Niño {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
 
+
     protected String Nombre, Apellido1, Apellido2 = null, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
     private char Sexo;
     private boolean Registrado, DosTutores;
-    private int Dia,Mes, Año;
+    private int Dia, Mes, Año , NCreados;
     protected char a,b , Decada , Anualidad;
     protected Padres Padre1, Padre2;
    
     
     // Constructor para cuando tine 2 padres
+    public Niño(){
+        NCreados++;
+        
+    }
+    // Segun tengo entendido esto ya no sirve de nada
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
             char sexo, boolean Registrado, int Dia, int Mes, int Año) {
+        NCreados++;
         this.Nombre = Nombre;
         this.Apellido1 = Papa.getApellido1();
         Padre1 = Papa;
@@ -33,10 +41,11 @@ public class Niño {
         this.Sexo = sexo;
         this.DosTutores = true;
     }
-
+    //y esto tampoco
     // Constructor para cuando tiene solo un padre
     public Niño(Padres Soltero, String Nombre, String Localidad, String Municipio, String Estado,
             char sexo, boolean Registrado, int Dia, int Mes, int Año) {
+        NCreados++;
         this.Nombre = Nombre;
         this.Apellido1 = Soltero.getApellido1();
         Padre1 = Soltero;
@@ -163,12 +172,7 @@ public class Niño {
 
                 }
             }
-            
-            
-            // Si ninguna consonante se encuentra en el nombre, asignamos 'X' a c16
-            if (c16 == 0) {
-                c16 = 'X';
-            }
+
             
                 GenerarHomoClave();
             System.out.println(c1 + "" + c2 + "" + c3 + "" + c4 + "" + c5 + "" + c6 + "" + c7 + "" + c8 + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + this.HomoClave);
@@ -546,6 +550,11 @@ public class Niño {
         }
     }
 
+    public int getNCreados(){
+        return NCreados;
+        
+    }
+
     public String getApellidoP(Padres Padre) {
         return Apellido1;
     }
@@ -555,6 +564,7 @@ public class Niño {
     }
 
     public String getFechaNaci() {
+        FechaNaci = (DosC.format(this.Dia) + "/" + DosC.format(this.Mes) + "/" + DosC.format(this.Año));
         return FechaNaci;
     }
 
@@ -594,4 +604,87 @@ public class Niño {
         return Curp;
     }
 
+    public void setSexo(){
+        System.out.println("Ingrese el sexo del niño : ");
+        Scanner Sc = new Scanner(System.in);
+        if (Sc.nextLine().equalsIgnoreCase("hombre")){
+            Sexo = 'H';
+        } else {
+            Sexo = 'M';
+        }
+    }
+
+public void setRegistro(){
+    System.out.println("Estado  del bebe :");
+    Scanner Sc = new Scanner(System.in);
+    
+    if (Sc.nextLine().equalsIgnoreCase("Vivo")) {
+        this.Registrado = true;
+    } else {
+        this.Registrado = false;
+    }
+}
+
+    public void setNombre(){
+        Scanner SC1 = new Scanner(System.in);
+        String nombre = SC1.nextLine();
+        this.Nombre = nombre; 
+    }
+
+    public void setApellidoP(Padres Padre){
+        Padre1 = Padre;
+        this.Apellido1 = Padre.getApellido1();
+    }
+
+    public void setApellidoM(Padres Madre){
+        DosTutores = true;
+        Padre2 = Madre;
+        this.Apellido2 = Madre.getApellido1();
+    }
+
+    public void setFechaCum(){
+        System.out.println("Dia de nacimiento :");
+        Scanner SCN1 = new Scanner(System.in);
+        int dia = SCN1.nextInt();
+        this.Dia = dia;
+        System.out.println("Mes de nacimiento :");
+        Scanner SCN2 = new Scanner(System.in);
+        int mes = SCN2.nextInt();
+        this.Mes = mes;
+        System.out.println("Año de nacimiento : ");
+        Scanner SCN3 = new Scanner(System.in);
+        int año = SCN3.nextInt();
+        this.Año = año;
+    }
+
+    public void setEstado(){
+        System.out.println("Ingrese el estado en el que el niño nacio : ");
+        
+        Scanner Sc = new Scanner(System.in);
+        String estado = Sc.nextLine();
+        
+        this.Estado = estado;
+        EntiedadFederativa();
+    }
+
+    public void setLocalidad(){
+        System.out.println("Ingrese la localidad en la que el niño nacio :");
+        Scanner sc = new Scanner(System.in);
+        String localidad = sc.nextLine();
+        this.Localidad = localidad;
+
+    }
+
+    public void setMunicipio(){
+        System.out.println("Ingrese el municipio en el que el niño nacio :");
+        Scanner sc = new Scanner(System.in);
+        String municipio = sc.nextLine();
+        this.Municipio = municipio;
+
+    }
+
+    public String toString(){
+        
+        return "El niño " + getNCreados() +"De sexo " + getSexo() + " de nombre " + getNombre() + " y apellidos " + Padre1.getApellido1() + " " + " Nacio el " + FechaNaci;
+    }
 }
