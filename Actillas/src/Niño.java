@@ -1,15 +1,18 @@
 
 import java.text.DecimalFormat;
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Niño {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
+    public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
 
     protected String Nombre, Apellido1, Apellido2 = null, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
     private char Sexo;
     private boolean Registrado, DosTutores;
     private int Dia, Mes, Año;
-    
 
     // Constructor para cuando tine 2 padres
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
@@ -51,10 +54,11 @@ public class Niño {
     }
 
     public void GenerarCurp() {
-        //Este Metodo se encarga de recopilar los datos necerios para una curp y unirlos
+        // Este Metodo se encarga de recopilar los datos necerios para una curp y
+        // unirlos
         this.GenerarHomoClave();
         if (DosTutores == true) {
-            //Caso en que tiene 2 tutores todo se puede llenar correctamente
+            // Caso en que tiene 2 tutores todo se puede llenar correctamente
             this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3)
                     + this.SelctorDeLetra(this.getApellido2(), 1) + "" + this.SelctorDeLetra(this.getNombre(), 1) + ""
                     + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
@@ -65,7 +69,8 @@ public class Niño {
                     + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
 
         } else {
-            //Caso en el que tiene solo uno, los datos que no pueden ser llenados se remplazan por X
+            // Caso en el que tiene solo uno, los datos que no pueden ser llenados se
+            // remplazan por X
             this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3)
                     + "X" + this.SelctorDeLetra(this.getNombre(), 1) + ""
                     + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
@@ -180,15 +185,15 @@ public class Niño {
                 break;
             /////////////////////////////////////////////////////////////////////////////////////////////////
             case 5:// Ultimo Caracteres
-                //Toma el largo de la cadena y se va por el ultimo carracter
+                   // Toma el largo de la cadena y se va por el ultimo carracter
                 LetraSelecionada = Palabra.charAt(Palabra.length() - 1);
                 break;
-            case 6://Penultimo Caracter
-                //Toma el largo de la cadena y devuelve el penultimo caracter
+            case 6:// Penultimo Caracter
+                   // Toma el largo de la cadena y devuelve el penultimo caracter
                 if (Palabra.length() > 1) {
                     LetraSelecionada = Palabra.charAt(Palabra.length() - 2);
                 } else {
-                    LetraSelecionada = Palabra.charAt(0);//Caso de 1 caracter nomas
+                    LetraSelecionada = Palabra.charAt(0);// Caso de 1 caracter nomas
                 }
                 break;
             default:// Primera Caracter
@@ -291,6 +296,33 @@ public class Niño {
 
     public String getHomoClave() {
         return HomoClave;
+    }
+
+    // Setters
+
+    public void setSexo() throws java.io.IOException {
+        System.out.println("Ingrese el sexo del niño : ");
+        this.Sexo = Character.toUpperCase(Leer.readLine().charAt(0));
+    }
+
+    public void setRegistro() throws java.io.IOException {
+        do {
+            System.out.println("Estado de registro: ");
+            char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
+
+            if (regisTemp == 'M') {
+                this.Registrado = false;
+                break;
+            } else {
+                if (regisTemp == 'V') {
+                    this.Registrado = true;
+                    break;
+                } else {
+                    System.out.println(
+                            "Estado invalido, porfavor llene con el estado de vivo o muerto segun sea el caso");
+                }
+            }
+        } while (true);
     }
 
 }
