@@ -35,7 +35,6 @@ public class Acta_De_Nacimiento implements Metodos {
     }
 
     public void GenerarNiño() throws java.io.IOException{
-        System.out.println("Nombre Del Niño");
         Descendente.setNombre();
         Descendente.setApellido1();
         Descendente.setApellido2();
