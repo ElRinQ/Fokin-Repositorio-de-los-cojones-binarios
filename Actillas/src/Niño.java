@@ -1,6 +1,5 @@
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.Scanner;
@@ -10,6 +9,7 @@ public class Niño {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
+    public static Scanner SC1 = new Scanner(System.in);
 
 
     protected String Nombre, Apellido1, Apellido2 = null, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
@@ -26,7 +26,7 @@ public class Niño {
         NCreados++;
         
     }
-    // Segun tengo entendido esto ya no sirve de nada
+    /*// Segun tengo entendido esto ya no sirve de nada
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
             char sexo, boolean Registrado, int Dia, int Mes, int Año) {
         NCreados++;
@@ -66,7 +66,7 @@ public class Niño {
         this.Sexo = sexo;
         this.Registrado = Registrado;
         this.DosTutores = false;
-    }
+    }*/
 
     public void GenerarCurp() {
         
@@ -260,225 +260,6 @@ public class Niño {
         Nombre = N;
 
     }
-
-    public void EntiedadFederativa(){
-
-        switch (Estado) {
-            case "Aguas Calientes" , "aguas calientes" :
-                a = 'A';
-                b = 'C';
-                break;
-
-                case "Baja California" , "baja california" :
-                a = 'B';
-                b = 'C';
-                break;
-                                
-                case "Coahuila" , "cohahuila" :
-                a = 'C';
-                b = 'L';
-                break;
-                                
-                case "Chiapas" , "chiapas":
-                a = 'C';
-                b = 'S';
-                break;
-                                
-                case "Campeche" , "campeche":
-                a = 'C';
-                b = 'C';
-                break;
-                                
-                case "Colima" , "colima" :
-                a = 'C';
-                b = 'M';
-                break;
-                                
-                case "Chihuahua" , "chihuahua" :
-                a = 'C';
-                b = 'H';
-                break;
-                                
-                case "Distrito Federal" , "distrito federal" :
-                a = 'D';
-                b = 'F';
-                break;
-                                
-                case "Durango" , "durango" :
-                a = 'D';
-                b = 'G';
-                break;
-                                
-                case "Guanajuato" , "guanajuato" :
-                a = 'G';
-                b = 'T';
-                break;
-                                
-                case "Guerrero", "guerrero" :
-                a = 'G';
-                b = 'R';
-                break;
-                                
-                case "Hidalgo", "hidalgo" :
-                a = 'H';
-                b = 'G';
-                break;
-                                
-                case "Jalisco" , "jalisco" :
-                a = 'J';
-                b = 'C';
-                break;
-                                
-                case "Mexico" , "mexico":
-                a = 'M';
-                b = 'C';
-                break;
-                                
-                case "Michoacan" , "michoacan":
-                a = 'M';
-                b = 'N';
-                break;
-                                
-                case "Nuevo Leon" , "nuevo leon" :
-                a = 'N';
-                b = 'L';
-                break;
-                                
-                case "Morelos" , "morelos" :
-                a = 'M';
-                b = 'S';
-                break;
-                                
-                case "Nayarit" , "nayarit":
-                a = 'N';
-                b = 'T';
-                break;
-                                
-                case "Oaxaca" , "oaxaca" :
-                a = 'O';
-                b = 'C';
-                break;
-                                
-                case "Puebla" , "puebla" :
-                a = 'P';
-                b = 'L';
-                break;
-                                
-                case "Queretaro" , "queretaro":
-                a = 'Q';
-                b = 'T';
-                break;
-                                
-                case "Quintanaroo" , "quintanaroo" :
-                a = 'Q';
-                b = 'R';
-                break;
-                                
-                case "San Luis Potosi" , "san luis potosi" :
-                a = 'S';
-                b = 'P';
-                break;
-                                
-                case "Sinaloa" , "sinaloa":
-                a = 'S';
-                b = 'L';
-                break;
-                                
-                case "Sonora" , "sonora" :
-                a = 'S';
-                b = 'R';
-                break;
-                                
-                case "Tlaxcala" , "tlaxcala" :
-                a = 'T';
-                b = 'L';
-                break;
-                                
-                case "Tabasco" , "tabasco" :
-                a = 'T';
-                b = 'C';
-                break;
-                                
-                case "Tamaulipas" , "tamaulipas" :
-                a = 'T';
-                b = 'S';
-                break;
-                                
-                case "Veracruz" , "veracruz" :
-                a = 'V';
-                b = 'Z';
-                break;
-                                
-                case "Yucatan" , "yucatan":
-                a = 'Y';
-                b = 'N';
-                break;
-                                
-                case "Zacatecas" , "zacatecas" :
-                a = 'Z';
-                b = 'S';
-                break;
-                                
-                case "Nacido en el extrangero" , "extrangero", "nacido en el extrangero" :
-                a = 'N';
-                b = 'E';
-                break;
-        }
-    }
-
-    public void MesNum() {
-        switch (Mes) {
-            case 1:
-                Decada = '0';
-                Anualidad = '1';
-                break;
-            case 2:
-                Decada = '0';
-                Anualidad = '2';
-                break;
-            case 3:
-                Decada = '0';
-                Anualidad = '3';
-                break;
-            case 4:
-                Decada = '0';
-                Anualidad = '4';
-                break;
-            case 5:
-                Decada = '0';
-                Anualidad = '5';
-                break;
-            case 6:
-                Decada = '0';
-                Anualidad = '6';
-                break;
-            case 7:
-                Decada = '0';
-                Anualidad = '7';
-                break;
-            case 8:
-                Decada = '0';
-                Anualidad = '8';
-                break;
-            case 9:
-                Decada = '0';
-                Anualidad = '9';
-                break;
-            case 10:
-                Decada = '1';
-                Anualidad = '0';
-                break;
-            case 11:
-                Decada = '1';
-                Anualidad = '1';
-                break;
-            case 12:
-                Decada = '1';
-                Anualidad = '2';
-                break;
-        }
-    }
-
     public int getNCreados(){
         return NCreados;
         
@@ -538,11 +319,23 @@ public class Niño {
     }
 
     public void setNombre(){
-        Scanner SC1 = new Scanner(System.in);
         String nombre = SC1.nextLine();
         this.Nombre = nombre; 
     }
 
+    public void setSexo() {
+        String input = SC1.nextLine().trim().toLowerCase();
+        switch (input) {
+            case "hombre":
+                this.Sexo = 'H';
+                break;
+            case "mujer":
+                this.Sexo = 'M';
+                break;
+            default:
+                System.out.println("Error, Sexo no válido");
+        }
+    }
 
     public void setApellidoP(Padres Padre){
         Padre1 = Padre;
@@ -556,83 +349,60 @@ public class Niño {
     }
 
     public void setFechaCum(){
+
         System.out.println("Dia de nacimiento :");
-        Scanner SCN1 = new Scanner(System.in);
-        int dia = SCN1.nextInt();
+        int dia = SC1.nextInt();
         this.Dia = dia;
         System.out.println("Mes de nacimiento :");
-        Scanner SCN2 = new Scanner(System.in);
-        int mes = SCN2.nextInt();
+        int mes = SC1.nextInt();
         this.Mes = mes;
         System.out.println("Año de nacimiento : ");
-        Scanner SCN3 = new Scanner(System.in);
-        int año = SCN3.nextInt();
+        int año = SC1.nextInt();
         this.Año = año;
     }
 
     public void setEstado(){
         System.out.println("Ingrese el estado en el que el niño nacio : ");
-        
-        Scanner Sc = new Scanner(System.in);
-        String estado = Sc.nextLine();
-        
+        String estado = SC1.nextLine();
         this.Estado = estado;
-        EntiedadFederativa();
+
     }
 
     public void setLocalidad(){
         System.out.println("Ingrese la localidad en la que el niño nacio :");
-        Scanner sc = new Scanner(System.in);
-        String localidad = sc.nextLine();
+        String localidad = SC1.nextLine();
         this.Localidad = localidad;
 
     }
 
     public void setMunicipio(){
         System.out.println("Ingrese el municipio en el que el niño nacio :");
-        Scanner sc = new Scanner(System.in);
-        String municipio = sc.nextLine();
+        String municipio = SC1.nextLine();
         this.Municipio = municipio;
+        
+    }
+
+    public void setRegistro(){
+        System.out.println("Estado de registro : ");
+        
+        if (SC1.nextLine().equalsIgnoreCase("vivo")){
+            this.Registrado =true;
+            
+        }else{
+            if (SC1.nextLine().equalsIgnoreCase("muerto")){
+                this.Registrado = false;
+
+            } else {
+                System.out.println("Error, registro no valido");
+
+            }
+
+        }
 
     }
 
     public String toString(){
         
-        return "El niño " + getNCreados() +"De sexo " + getSexo() + " de nombre " + getNombre() + " y apellidos " + Padre1.getApellido1() + " " + " Nacio el " + FechaNaci;
-    }
-
-    // Setters
-
-    public void setSexo() throws java.io.IOException {
-        System.out.println("Ingrese el sexo del niño : ");
-        this.Sexo = Character.toUpperCase(Leer.readLine().charAt(0));
-    }
-
-    public void setRegistro() throws java.io.IOException {
-        do {
-            System.out.println("Estado de registro: ");
-            char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
-
-            if (regisTemp == 'M') {
-                this.Registrado = false;
-                break;
-            } else {
-                if (regisTemp == 'V') {
-                    this.Registrado = true;
-                    break;
-                } else {
-                    System.out.println(
-                            "Estado invalido, porfavor llene con el estado de vivo o muerto segun sea el caso");
-                }
-            }
-        } while (true);
-    }
-
-        public void cerrarLector() {
-        try {
-            Leer.close();
-        } catch (IOException e) {
-            System.out.println("Error al cerrar el lector: " + e.getMessage());
-        }
+        return "El niño " + getNCreados() +" De sexo " + getSexo() + " de nombre " + getNombre() + " y apellidos " + Padre1.getApellido1() + " " + " Nacio el " + FechaNaci;
     }
 }

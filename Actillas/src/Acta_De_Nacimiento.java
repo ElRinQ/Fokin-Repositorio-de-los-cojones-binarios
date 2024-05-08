@@ -1,5 +1,4 @@
 
-import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -30,14 +29,12 @@ public class Acta_De_Nacimiento implements Metodos {
     @Override
     public void Generar(){
         GenerarPadres();
-        try {
             GenerarNiño();
-        } catch (IOException ex) {
-        }
+
 
     }
 
-    public void GenerarNiño() throws IOException{
+    public void GenerarNiño() {
         System.out.println("Nombre Del Niño");
         Descendente.setNombre();
         Descendente.setApellidoP(Padre);
