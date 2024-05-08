@@ -1,11 +1,10 @@
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.Scanner;
-<<<<<<< HEAD
-=======
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
->>>>>>> 8d5945f9042aec5310983637d89c34d771e3269f
+
 
 public class Niño {
 
@@ -16,16 +15,12 @@ public class Niño {
     protected String Nombre, Apellido1, Apellido2 = null, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
     private char Sexo;
     private boolean Registrado, DosTutores;
-<<<<<<< HEAD
+
     private int Dia, Mes, Año , NCreados;
     protected char a,b , Decada , Anualidad;
     protected Padres Padre1, Padre2;
-   
-    
-=======
-    private int Dia, Mes, Año;
 
->>>>>>> 8d5945f9042aec5310983637d89c34d771e3269f
+
     // Constructor para cuando tine 2 padres
     public Niño(){
         NCreados++;
@@ -74,17 +69,7 @@ public class Niño {
     }
 
     public void GenerarCurp() {
-<<<<<<< HEAD
-        this.GenerarHomoClave();
-        this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3) + ""
-                + this.SelctorDeLetra(this.getApellido2(), 1) + "" + this.SelctorDeLetra(this.getNombre(), 1) + ""
-                + (this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + "" +this.SelctorDeLetra(String.valueOf(this.getAño()), 5)
-                + DosC.format(this.getMes()) + "" + DosC.format(this.getDia())) + "" + this.getSexo() + ""
-                + this.SelctorDeLetra(this.getEstado(), 1) + "" + this.SelctorDeLetra(this.getEstado(), 4) + ""
-                + this.SelctorDeLetra(this.getApellido1(), 2) + "" + this.SelctorDeLetra(this.getApellido2(), 2) + ""
-                + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
-
-=======
+        
         // Este Metodo se encarga de recopilar los datos necerios para una curp y
         // unirlos
         this.GenerarHomoClave();
@@ -111,7 +96,6 @@ public class Niño {
                     + this.SelctorDeLetra(this.getApellido1(), 2) + "X"
                     + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
         }
->>>>>>> 8d5945f9042aec5310983637d89c34d771e3269f
     }
 
     public char SelctorDeLetra(String Palabra, int Modalidad) {
@@ -207,8 +191,7 @@ public class Niño {
                 } while ((contador < Palabra.length()));
                 break;
             /////////////////////////////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
-=======
+
             case 5:// Ultimo Caracteres
                    // Toma el largo de la cadena y se va por el ultimo carracter
                 LetraSelecionada = Palabra.charAt(Palabra.length() - 1);
@@ -221,7 +204,6 @@ public class Niño {
                     LetraSelecionada = Palabra.charAt(0);// Caso de 1 caracter nomas
                 }
                 break;
->>>>>>> 8d5945f9042aec5310983637d89c34d771e3269f
             default:// Primera Caracter
                 LetraSelecionada = Palabra.charAt(0);
                 break;
@@ -555,33 +537,12 @@ public class Niño {
         return HomoClave;
     }
 
-<<<<<<< HEAD
-    public void setSexo(){
-        System.out.println("Ingrese el sexo del niño : ");
-        Scanner Sc = new Scanner(System.in);
-        if (Sc.nextLine().equalsIgnoreCase("hombre")){
-            Sexo = 'H';
-        } else {
-            Sexo = 'M';
-        }
-    }
-
-public void setRegistro(){
-    System.out.println("Estado  del bebe :");
-    Scanner Sc = new Scanner(System.in);
-    
-    if (Sc.nextLine().equalsIgnoreCase("Vivo")) {
-        this.Registrado = true;
-    } else {
-        this.Registrado = false;
-    }
-}
-
     public void setNombre(){
         Scanner SC1 = new Scanner(System.in);
         String nombre = SC1.nextLine();
         this.Nombre = nombre; 
     }
+
 
     public void setApellidoP(Padres Padre){
         Padre1 = Padre;
@@ -639,7 +600,7 @@ public void setRegistro(){
         
         return "El niño " + getNCreados() +"De sexo " + getSexo() + " de nombre " + getNombre() + " y apellidos " + Padre1.getApellido1() + " " + " Nacio el " + FechaNaci;
     }
-=======
+
     // Setters
 
     public void setSexo() throws java.io.IOException {
@@ -667,5 +628,11 @@ public void setRegistro(){
         } while (true);
     }
 
->>>>>>> 8d5945f9042aec5310983637d89c34d771e3269f
+        public void cerrarLector() {
+        try {
+            Leer.close();
+        } catch (IOException e) {
+            System.out.println("Error al cerrar el lector: " + e.getMessage());
+        }
+    }
 }
