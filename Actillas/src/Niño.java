@@ -62,124 +62,16 @@ public class Niño {
         this.DosTutores = false;
     }
 
-    public void GenerarCurp(Niño registrando) {
-        // si no hay segundo apellido se llena el espacio conuna x
-        // si se llama jose o maria, se toma en cuenta el segundo nombre en lugar del
-        // primero
-        // El plan es que se ejecute distinto segun si tiene o no dos padres
+    public void GenerarCurp() {
+        this.GenerarHomoClave();
+        this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3) + ""
+                + this.SelctorDeLetra(this.getApellido2(), 1) + "" + this.SelctorDeLetra(this.getNombre(), 1) + ""
+                + (this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + "" +this.SelctorDeLetra(String.valueOf(this.getAño()), 5)
+                + DosC.format(this.getMes()) + "" + DosC.format(this.getDia())) + "" + this.getSexo() + ""
+                + this.SelctorDeLetra(this.getEstado(), 1) + "" + this.SelctorDeLetra(this.getEstado(), 4) + ""
+                + this.SelctorDeLetra(this.getApellido1(), 2) + "" + this.SelctorDeLetra(this.getApellido2(), 2) + ""
+                + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
 
-        if (registrando.DosTutores == false){
-            //Captura el primer caracter del apeliido
-            char c1 = Apellido1.charAt(0);
-            char c2 = 0;
-            //Captura la vocal del apellido
-
-            for (int i = 0; i < Apellido1.length(); i++) {
-               char L = Apellido1.charAt(i);
-               if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
-                c2 = Character.toUpperCase(L);
-                break;
-               }
-            }
-            char c4 = Nombre.charAt(0);
-
-            //Como no hay segundo apellido se genera una x en su ausencia
-
-            String Ano = String.valueOf(Año);
-            char c5 = Ano.charAt(2);
-            char c6 = Ano.charAt(3);
-            
-            MesNum();
-            char c7 = Decada;
-            char c8 = Anualidad;
-
-            //Llamamos al metodo entidad federativa para que lea el estado y nos diga su abreviacion6
-
-            EntiedadFederativa();
-
-            char c12 = a;
-            char c13 = b;
-            char c14 = 0;
-
-            for (int i = 0; i < Apellido1.length(); i++) {
-                char L = Apellido1.charAt(i);
-                if(L != 'A' && L != 'E' && L != 'I' && L != 'O' && L != 'U'){//Busca Consonantes excluyendo vocales
-                 c14 = Character.toUpperCase(L);
-                 break;
-                }
-            }
-
-            char c16 = 0;
-            for (int i = 1; i < Nombre.length(); i++) {
-                char L = Nombre.charAt(i);
-                if (L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u') {
-                    c16 = Character.toUpperCase(L);
-                    break;
-                }else{
-                    c16 = 'X';
-
-                }
-            }
-                GenerarHomoClave();
-            System.out.println(c1 + "" + c2 + "" + 'X' + "" + c4 + "" + c5 + "" + c6 + "" + c7 + "" + c8 + "" + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + 'X'+ "" + c16 + "" + this.HomoClave);
-        }else{
-            char c1 = Apellido1.charAt(0);
-            char c2 = 0;
-            //Captura la vocal del apellido
-            for (int i = 1; i < Apellido1.length(); i++) {
-               char L = Apellido1.charAt(i);
-               if(L == 'A' ||L == 'E' ||L == 'I' ||L == 'O' ||L == 'U' || L == 'a'|| L == 'e'|| L == 'i'|| L == 'o'|| L == 'u'){
-                c2 = Character.toUpperCase(L);
-                break;
-               }
-            }
-            char c3 = Apellido2.charAt(0);
-            char c4 = Nombre.charAt(0);
-            String Ano = String.valueOf(Año);
-            char c5 = Ano.charAt(2);
-            char c6 = Ano.charAt(3);
-            MesNum();
-            char c7 = Decada;
-            char c8 = Anualidad;
-            //Llamamos al metodo entidad federativa para que lea el estado y nos diga su abreviacion6
-            EntiedadFederativa();
-            char c12 = a;
-            char c13 = b;
-            char c14 = 0;
-            for (int i = 2; i < Apellido1.length(); i++) {
-                char L = Apellido1.charAt(i);
-                if(L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u'){//Busca Consonantes excluyendo vocales
-                 c14 = Character.toUpperCase(L);
-                 break;
-                }
-            }
-            char c15 = 0;
-            for (int i = 1; i < Apellido2.length(); i++) {
-                char L = Apellido2.charAt(i);
-                if(L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u'){
-                 c15 = Character.toUpperCase(L);
-                 break;
-                }
-            }
-            char c16 = 0;
-            for (int i = 1; i < Nombre.length(); i++) {
-                char L = Nombre.charAt(i);
-                if (L != 'a' && L != 'e' && L != 'i' && L != 'o' && L != 'u') {
-                    c16 = Character.toUpperCase(L);
-                    break;
-                }else{
-                    c16 = 'X';
-
-                }
-            }
-
-            
-                GenerarHomoClave();
-            System.out.println(c1 + "" + c2 + "" + c3 + "" + c4 + "" + c5 + "" + c6 + "" + c7 + "" + c8 + "" + Dia + "" + Sexo + "" + c12 + "" + c13 + "" + c14 + "" + c15 + "" + c16 + "" + this.HomoClave);
-        }
-
-        // Para las claves de los estados usaremos la primera letra y la ultima
-        // consonante
     }
 
     public char SelctorDeLetra(String Palabra, int Modalidad) {
@@ -555,11 +447,11 @@ public class Niño {
         
     }
 
-    public String getApellidoP(Padres Padre) {
+    public String getApellido1() {
         return Apellido1;
     }
 
-    public String getApellidoM(Padres Madre) {
+    public String getApellido2() {
         return Apellido2;
     }
 
@@ -602,6 +494,10 @@ public class Niño {
 
     public String getCurp() {
         return Curp;
+    }
+
+    public String getHomoClave() {
+        return HomoClave;
     }
 
     public void setSexo(){
