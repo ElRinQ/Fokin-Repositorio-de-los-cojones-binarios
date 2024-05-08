@@ -27,27 +27,27 @@ public class Acta_De_Nacimiento implements Metodos {
     }
 
     @Override
-    public void Generar(){
+    public void Generar() throws java.io.IOException{
         GenerarPadres();
-            GenerarNiño();
+        GenerarNiño();
 
 
     }
 
-    public void GenerarNiño() {
+    public void GenerarNiño() throws java.io.IOException{
         System.out.println("Nombre Del Niño");
         Descendente.setNombre();
-        Descendente.setApellidoP(Padre);
-        Descendente.setApellidoM(Madre);
-        Descendente.setFechaCum();
-        System.out.println(Descendente.getFechaNaci());
+        Descendente.setApellido1();
+        Descendente.setApellido2();
+        Descendente.setDia();
+        Descendente.setMes();
+        Descendente.setAño();
+        Descendente.GeneraFechaNaci();
         Descendente.setEstado();
         Descendente.setMunicipio();
         Descendente.setLocalidad();
         Descendente.setSexo();
         Descendente.setRegistro();
-
-
     }
 
     public void GenerarPadres(){

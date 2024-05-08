@@ -1,75 +1,63 @@
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.Scanner;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Niño {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
-    public static Scanner SC1 = new Scanner(System.in);
-
 
     protected String Nombre, Apellido1, Apellido2 = null, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
     private char Sexo;
     private boolean Registrado, DosTutores;
-
-    private int Dia, Mes, Año , NCreados;
-    protected char a,b , Decada , Anualidad;
-    protected Padres Padre1, Padre2;
-
+    private int Dia, Mes, Año;
 
     // Constructor para cuando tine 2 padres
-    public Niño(){
-        NCreados++;
-        
-    }
-    /*// Segun tengo entendido esto ya no sirve de nada
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
-            char sexo, boolean Registrado, int Dia, int Mes, int Año) {
-        NCreados++;
+            char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
         this.Nombre = Nombre;
         this.Apellido1 = Papa.getApellido1();
-        Padre1 = Papa;
         this.Apellido2 = Mama.getApellido1();
-        Padre2 = Mama;
         this.Registrado = Registrado;
         this.Dia = Dia;
         this.Mes = Mes;
-        DosC.format(Mes);
         this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
         this.Estado = Estado;
-        this.Sexo = sexo;
+        this.Sexo = Sexo;
         this.DosTutores = true;
+        this.GenerarCurp();
+
     }
-    //y esto tampoco
+
     // Constructor para cuando tiene solo un padre
     public Niño(Padres Soltero, String Nombre, String Localidad, String Municipio, String Estado,
-            char sexo, boolean Registrado, int Dia, int Mes, int Año) {
-        NCreados++;
+            char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
         this.Nombre = Nombre;
         this.Apellido1 = Soltero.getApellido1();
-        Padre1 = Soltero;
         this.Dia = Dia;
         this.Mes = Mes;
-        DosC.format(Mes);
         this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
         this.Estado = Estado;
-        this.Sexo = sexo;
+        this.Sexo = Sexo;
         this.Registrado = Registrado;
         this.DosTutores = false;
-    }*/
+        this.GenerarCurp();
+
+    }
+
+    public void GeneraFechaNaci(){
+        this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
+    }
 
     public void GenerarCurp() {
-        
         // Este Metodo se encarga de recopilar los datos necerios para una curp y
         // unirlos
         this.GenerarHomoClave();
@@ -101,9 +89,9 @@ public class Niño {
     public char SelctorDeLetra(String Palabra, int Modalidad) {
         char LetraSelecionada = '#';
         final String Vocales = "AEIOUaeiouáéíóúü";// Vocales y sus variantes
-        final String Consonantes = "BCDFGHJKLMNÑOPQRSTVWXYZbcdfghjklmnñpqrstvwxyz";// Consonantes y sus variables
+        final String Consonantes = "BCDFGHJKLMNÑPQRSTVWXYZbcdfghjklmnñpqrstvwxyz";// Consonantes y sus variables
         final String Abecedrio = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZbcdfghjklmnñpqrstvwxyzaeiouáéíóúü";// Abecedario con
-                                                                                                // variantes
+        // variantes
         int contador = 0;
 
         switch (Modalidad) {
@@ -115,6 +103,7 @@ public class Niño {
                 do {
                     // Se seleciona la letra que vamos a evaluar
                     LetraSelecionada = Palabra.charAt(contador);
+                    LetraSelecionada = Character.toUpperCase(LetraSelecionada);
                     for (int i = 0; i < Abecedrio.length(); i++) {
                         // Se comprueba que este en el abecedario
                         if (LetraSelecionada == Abecedrio.charAt(i)) {
@@ -135,17 +124,21 @@ public class Niño {
                     // Este if confirma que la palabra tenga mas de una letra
                     if (Palabra.length() <= contador + 1) {
                         // Se asigna esa unica letra como valor de retorno
-                        LetraSelecionada = Palabra.charAt(contador);
+                        LetraSelecionada = 'X';
                         ConIn = true;
                     } else {
                         // Se seleciona la letra que vamos a evaluar
                         LetraSelecionada = Palabra.charAt(contador + 1);
+                        LetraSelecionada = Character.toUpperCase(LetraSelecionada);
                         for (int i = 0; i < Consonantes.length(); i++) {
                             // Se evalua que sea consonante
                             if (LetraSelecionada == Consonantes.charAt(i)) {
                                 ConIn = true;
                             }
                         }
+                    }
+                    if (ConIn == false) {
+                        LetraSelecionada = 'X';
                     }
                     contador++;
                 } while ((ConIn == false) && (contador < Palabra.length()));
@@ -157,11 +150,12 @@ public class Niño {
                 do {
                     // Este if confirma uqe la palabra tenga mas de una letra
                     if (Palabra.length() <= contador + 1) {
-                        LetraSelecionada = Palabra.charAt(contador);
+                        LetraSelecionada = 'X';
                         VoIn = true;
                     } else {
                         // Se seleciona la letra que vamos a evaluar
                         LetraSelecionada = Palabra.charAt(contador + 1);
+                        LetraSelecionada = Character.toUpperCase(LetraSelecionada);
                         for (int i = 0; i < Vocales.length(); i++) {
                             // Se evalua que sea vocal
                             if (LetraSelecionada == Vocales.charAt(i)) {
@@ -169,29 +163,31 @@ public class Niño {
                             }
                         }
                     }
+                    if (VoIn == false) {
+                        LetraSelecionada = 'X';
+                    }
                     contador++;
                 } while ((VoIn == false) && (contador < Palabra.length()));
                 break;
             /////////////////////////////////////////////////////////////////////////////////////////////////
-            case 4://Ultima consonante
-                //La variable UltimaCons Almacena la ultimima consonante de la palabra evaluada
+            case 4:// Ultima consonante
+                   // La variable UltimaCons Almacena la ultimima consonante de la palabra evaluada
                 char UltimaCons = Palabra.charAt(contador);
                 do {
-                    boolean EsCon = false;//Esta variable evita que se pierda tiempo
+                    boolean EsCon = false;// Esta variable evita que se pierda tiempo
                     LetraSelecionada = Palabra.charAt(contador);
                     for (int i = 0; (i < Consonantes.length()) && EsCon == false; i++) {
-                        //Se confirma que la letra sea una consonante
+                        // Se confirma que la letra sea una consonante
                         if (LetraSelecionada == Consonantes.charAt(i)) {
-                            UltimaCons = LetraSelecionada;//Se copea la consonante
+                            UltimaCons = LetraSelecionada;// Se copea la consonante
                             EsCon = true;
                         }
                     }
-                    LetraSelecionada = UltimaCons;//Se pone la ultima cons para el retorno
+                    LetraSelecionada = Character.toUpperCase(UltimaCons);// Se pone la ultima cons para el retorno
                     contador++;
                 } while ((contador < Palabra.length()));
                 break;
             /////////////////////////////////////////////////////////////////////////////////////////////////
-
             case 5:// Ultimo Caracteres
                    // Toma el largo de la cadena y se va por el ultimo carracter
                 LetraSelecionada = Palabra.charAt(Palabra.length() - 1);
@@ -237,7 +233,7 @@ public class Niño {
                 temp = Abecedrio.charAt(ran);
             }
 
-            // Agina los valores de "temp" a los digitos
+            // Agina los valores de "temp" a loººs digitos
             if (i == 0) {
                 Digito1 = temp;
             } else {
@@ -254,17 +250,6 @@ public class Niño {
         return Nombre;
     }
 
-    public void getNombreCompleto(String A1, String A2, String N){
-        Apellido1 = A1;
-        Apellido2 = A2;
-        Nombre = N;
-
-    }
-    public int getNCreados(){
-        return NCreados;
-        
-    }
-
     public String getApellido1() {
         return Apellido1;
     }
@@ -274,7 +259,6 @@ public class Niño {
     }
 
     public String getFechaNaci() {
-        FechaNaci = (DosC.format(this.Dia) + "/" + DosC.format(this.Mes) + "/" + DosC.format(this.Año));
         return FechaNaci;
     }
 
@@ -318,91 +302,104 @@ public class Niño {
         return HomoClave;
     }
 
-    public void setNombre(){
-        String nombre = SC1.nextLine();
-        this.Nombre = nombre; 
+    // Setters
+
+    public void setSexo() throws java.io.IOException {
+        System.out.println("Ingrese el sexo del niño : ");
+        this.Sexo = Character.toUpperCase(Leer.readLine().charAt(0));
     }
 
-    public void setSexo() {
-        String input = SC1.nextLine().trim().toLowerCase();
-        switch (input) {
-            case "hombre":
-                this.Sexo = 'H';
-                break;
-            case "mujer":
-                this.Sexo = 'M';
-                break;
-            default:
-                System.out.println("Error, Sexo no válido");
-        }
-    }
+    public void setRegistro() throws java.io.IOException {
+        do {
+            System.out.println("Estado de registro: ");
+            char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
 
-    public void setApellidoP(Padres Padre){
-        Padre1 = Padre;
-        this.Apellido1 = Padre.getApellido1();
-    }
-
-    public void setApellidoM(Padres Madre){
-        DosTutores = true;
-        Padre2 = Madre;
-        this.Apellido2 = Madre.getApellido1();
-    }
-
-    public void setFechaCum(){
-
-        System.out.println("Dia de nacimiento :");
-        int dia = SC1.nextInt();
-        this.Dia = dia;
-        System.out.println("Mes de nacimiento :");
-        int mes = SC1.nextInt();
-        this.Mes = mes;
-        System.out.println("Año de nacimiento : ");
-        int año = SC1.nextInt();
-        this.Año = año;
-    }
-
-    public void setEstado(){
-        System.out.println("Ingrese el estado en el que el niño nacio : ");
-        String estado = SC1.nextLine();
-        this.Estado = estado;
-
-    }
-
-    public void setLocalidad(){
-        System.out.println("Ingrese la localidad en la que el niño nacio :");
-        String localidad = SC1.nextLine();
-        this.Localidad = localidad;
-
-    }
-
-    public void setMunicipio(){
-        System.out.println("Ingrese el municipio en el que el niño nacio :");
-        String municipio = SC1.nextLine();
-        this.Municipio = municipio;
-        
-    }
-
-    public void setRegistro(){
-        System.out.println("Estado de registro : ");
-        
-        if (SC1.nextLine().equalsIgnoreCase("vivo")){
-            this.Registrado =true;
-            
-        }else{
-            if (SC1.nextLine().equalsIgnoreCase("muerto")){
+            if (regisTemp == 'M') {
                 this.Registrado = false;
-
+                break;
             } else {
-                System.out.println("Error, registro no valido");
-
+                if (regisTemp == 'V') {
+                    this.Registrado = true;
+                    break;
+                } else {
+                    System.out.println(
+                            "Estado invalido, porfavor llene con el estado de vivo o muerto segun sea el caso");
+                }
             }
+        } while (true);
+    }
 
-        }
+    public void setNombre() throws java.io.IOException {
+        System.out.println("Nombre del registrado:");
+        this.Nombre = Leer.readLine();
+    }
+
+    public void setApellido1() throws java.io.IOException {
+        System.out.println("Primere apellido: ");
+        this.Apellido1 = Leer.readLine();
+    }
+
+    public void setApellido2() throws java.io.IOException {
+        System.out.println("Segundo apelllido: ");
+        this.Apellido2 = Leer.readLine();
+    }
+
+    public void setDia() throws java.io.IOException {
+        do {
+            try {
+                System.out.println("Dia de nacimiento: ");
+                this.Dia = Integer.parseInt(Leer.readLine());
+                if(Dia >0 && Dia <= 31){
+                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
+                }
+            } catch (NumberFormatException Noint) {
+                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
+            }
+        } while (true);
 
     }
 
-    public String toString(){
-        
-        return "El niño " + getNCreados() +" De sexo " + getSexo() + " de nombre " + getNombre() + " y apellidos " + Padre1.getApellido1() + " " + " Nacio el " + FechaNaci;
+    public void setMes() throws java.io.IOException {
+        do {
+            try {
+                System.out.println("Dia de nacimiento: ");
+                this.Mes = Integer.parseInt(Leer.readLine());
+                if(Mes > 0 && Mes <= 12){
+                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
+                }
+            } catch (NumberFormatException Noint) {
+                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
+            }
+        } while (true);
+
     }
+
+    public void setAño() throws java.io.IOException {
+        do {
+            try {
+                System.out.println("Dia de nacimiento: ");
+                this.Año = Integer.parseInt(Leer.readLine());
+            } catch (NumberFormatException Noint) {
+                System.out.println("\nSolo se aceptan numeros enteros positivos\n");
+            }
+        } while (true);
+
+    }
+
+    public void setEstado() throws java.io.IOException {
+        System.out.println("Estado de nacimiento: ");
+        this.Estado = Leer.readLine();
+    }
+
+    public void setMunicipio() throws java.io.IOException {
+        System.out.println("Municipio de nacimiento: ");
+        this.Municipio = Leer.readLine();
+    }
+
+    public void setLocalidad() throws java.io.IOException {
+        System.out.println("Localidad de nacimiento: ");
+        this.Localidad = Leer.readLine();
+    }
+
+
 }

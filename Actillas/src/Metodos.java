@@ -1,5 +1,5 @@
 public interface Metodos {
 
-    public void Generar();
+    public void Generar()throws java.io.IOException;
 
 }
