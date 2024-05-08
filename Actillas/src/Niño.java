@@ -325,4 +325,9 @@ public class Niño {
         } while (true);
     }
 
+    public void setNombre()throws java.io.IOException{
+        System.out.println("Nombre del registrado:");
+        this.Nombre = Leer.readLine(); 
+    }
+
 }
