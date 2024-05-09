@@ -1,8 +1,8 @@
 
-import java.text.DecimalFormat;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class Niño {
 
@@ -13,6 +13,12 @@ public class Niño {
     private char Sexo;
     private boolean Registrado, DosTutores;
     private int Dia, Mes, Año;
+    protected Padres Padre1 , Padre2;
+    public static Scanner SC = new Scanner(System.in);
+
+    public Niño (){
+        this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
+    }
 
     // Constructor para cuando tine 2 padres
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
@@ -23,7 +29,6 @@ public class Niño {
         this.Registrado = Registrado;
         this.Dia = Dia;
         this.Mes = Mes;
-        this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
@@ -52,6 +57,7 @@ public class Niño {
         this.GenerarCurp();
 
     }
+
 
     public void GeneraFechaNaci() {
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
@@ -334,9 +340,9 @@ public class Niño {
         this.Nombre = Leer.readLine();
     }
 
-    public void setApellido1() throws java.io.IOException {
-        System.out.println("Primere apellido: ");
-        this.Apellido1 = Leer.readLine();
+    public void setApellidoP(Padres Padre)throws java.io.IOException{
+        Padre1 = Padre;
+        this.Apellido1 = Padre.getApellido1();
     }
 
     public void setApellido2() throws java.io.IOException {
@@ -388,7 +394,19 @@ public class Niño {
                 System.out.println("\nSolo se aceptan numeros enteros positivos\n");
             }
         } while (true);
+    }
 
+    public void setApellidoM(Padres Madre)throws java.io.IOException{
+        DosTutores = true;
+        Padre2 = Madre;
+        this.Apellido2 = Madre.getApellido1();
+
+    }
+
+    public void setFechaCum()throws java.io.IOException{
+     this.setDia();
+     this.setAño();
+     this.setMes();
     }
 
     public void setEstado() throws java.io.IOException {

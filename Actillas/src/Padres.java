@@ -4,8 +4,11 @@ import java.util.Scanner;
 public class Padres {
     private String Nombre, Apellido1, Apellido2, Nacionalidad;
     private int Edad;
-    Scanner SC1;
-
+    Scanner SC1 = new Scanner(System.in);
+    
+    public Padres (){
+    
+    }
     // Constructor para cuando el padre tiene 2 apellidos
     public Padres(String Nombre, String Apellido1, String Apellido2, String Nacionalidad, int Edad) {
         this.Nombre = Nombre;
@@ -46,25 +49,21 @@ public class Padres {
 
     // Setters para los atributos
     public void setNombre() {
-        Scanner SC1 = new Scanner(System.in);
         String nombre = SC1.nextLine();
         this.Nombre = nombre;
     }
 
     public void setApellido1() {
-        SC1 = new Scanner(System.in);
         String ApellidoP = SC1.nextLine();
         this.Apellido1 = ApellidoP;
     }
 
     public void setApellido2() {
-        SC1 = new Scanner(System.in);
         String ApellidoM = SC1.nextLine();
         this.Apellido2 = ApellidoM;
     }
 
     public void setNacionalidad() {
-        SC1 = new Scanner(System.in);
         String nacionalidad = SC1.nextLine();
         this.Nacionalidad = nacionalidad;
     }
@@ -72,7 +71,6 @@ public class Padres {
     public void setEdad(){
         do {
             try {
-                 SC1 = new Scanner(System.in);
                  int edad = SC1.nextInt();
                  this.Edad = edad;
                  break;
@@ -81,6 +79,4 @@ public class Padres {
             }
         } while (true);
     }
-
-
 }

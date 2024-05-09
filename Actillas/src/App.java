@@ -5,16 +5,18 @@ public class App {
 
 Padres P1 = new Padres("Enrique", "Segura", "Romo", 32);
 Padres P2 = new Padres("Ana Alicia", "Gonzalez", "Mendoza", "Mexicana", 26);
-Niño N1 = new Niño(P1, P2, "Andres", "Hermosillo", "Hermosillo", "Sonora", 'H', true, 10, 11, 1976);
+Niño N1 = new Niño();
+Niño N2 = new Niño();
 
 
+
+InfoDoc Nueva_Info = new InfoDoc();
 Acta_De_Nacimiento Nueva_Acta_De_Nacimiento = new Acta_De_Nacimiento(N1);
 
-Nueva_Acta_De_Nacimiento.Generar();
+Doc Actilla = new Doc();
+Actilla.Generar();
 
-N1.GenerarCurp();
 
-System.out.println(N1);
 System.out.println(N1.getCurp());
 }
 }

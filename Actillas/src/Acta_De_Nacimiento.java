@@ -32,14 +32,14 @@ public class Acta_De_Nacimiento implements Metodos {
         GenerarNiño();
     }
 
-    public void GenerarNiño() throws java.io.IOException{
+    public void GenerarNiño() throws java.io.IOException {
+        
         Descendente.setNombre();
-        Descendente.setApellido1();
-        Descendente.setApellido2();
-        Descendente.setDia();
-        Descendente.setMes();
-        Descendente.setAño();
+        Descendente.setApellidoP(Padre);
+        Descendente.setApellidoM(Madre);
+        Descendente.setFechaCum();
         Descendente.GeneraFechaNaci();
+        System.out.println(Descendente.getFechaNaci());
         Descendente.setEstado();
         Descendente.setMunicipio();
         Descendente.setLocalidad();
