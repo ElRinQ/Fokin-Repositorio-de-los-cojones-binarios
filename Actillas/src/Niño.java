@@ -53,7 +53,7 @@ public class Niño {
 
     }
 
-    public void GeneraFechaNaci(){
+    public void GeneraFechaNaci() {
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
     }
 
@@ -306,7 +306,7 @@ public class Niño {
 
     public void setSexo() throws java.io.IOException {
         System.out.println("Ingrese el sexo del niño : ");
-        this.Sexo = Character.toUpperCase(Leer.readLine().charAt(0));
+        this.Sexo = SelctorDeLetra(Leer.readLine(), 1);
     }
 
     public void setRegistro() throws java.io.IOException {
@@ -349,7 +349,9 @@ public class Niño {
             try {
                 System.out.println("Dia de nacimiento: ");
                 this.Dia = Integer.parseInt(Leer.readLine());
-                if(Dia >0 && Dia <= 31){
+                if (Dia > 0 && Dia <= 31) {
+                    break;
+                } else {
                     System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
                 }
             } catch (NumberFormatException Noint) {
@@ -362,9 +364,11 @@ public class Niño {
     public void setMes() throws java.io.IOException {
         do {
             try {
-                System.out.println("Dia de nacimiento: ");
+                System.out.println("Mes de nacimiento: ");
                 this.Mes = Integer.parseInt(Leer.readLine());
-                if(Mes > 0 && Mes <= 12){
+                if (Mes > 0 && Mes <= 12) {
+                    break;
+                } else {
                     System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
                 }
             } catch (NumberFormatException Noint) {
@@ -377,8 +381,9 @@ public class Niño {
     public void setAño() throws java.io.IOException {
         do {
             try {
-                System.out.println("Dia de nacimiento: ");
+                System.out.println("Año de nacimiento: ");
                 this.Año = Integer.parseInt(Leer.readLine());
+                break;
             } catch (NumberFormatException Noint) {
                 System.out.println("\nSolo se aceptan numeros enteros positivos\n");
             }
@@ -400,6 +405,5 @@ public class Niño {
         System.out.println("Localidad de nacimiento: ");
         this.Localidad = Leer.readLine();
     }
-
 
 }

@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Padres {
@@ -75,7 +76,7 @@ public class Padres {
                  int edad = SC1.nextInt();
                  this.Edad = edad;
                  break;
-            }catch(NumberFormatException e){
+            }catch(InputMismatchException e){
                 System.out.println("Entrada invalida, ingrese una edad expresada en enteros");
             }
         } while (true);

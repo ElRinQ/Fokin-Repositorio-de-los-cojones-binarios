@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Acta_De_Nacimiento implements Metodos {
 
     Niño Descendente;
-    Padres Padre , Madre;
+    Padres Padre, Madre;
     InfoDoc Documentillo;
 
     public Acta_De_Nacimiento(Niño Registrado){
@@ -30,8 +30,6 @@ public class Acta_De_Nacimiento implements Metodos {
     public void Generar() throws java.io.IOException{
         GenerarPadres();
         GenerarNiño();
-
-
     }
 
     public void GenerarNiño() throws java.io.IOException{
@@ -47,6 +45,7 @@ public class Acta_De_Nacimiento implements Metodos {
         Descendente.setLocalidad();
         Descendente.setSexo();
         Descendente.setRegistro();
+        Descendente.GenerarCurp();
     }
 
     public void GenerarPadres(){
@@ -57,36 +56,36 @@ public class Acta_De_Nacimiento implements Metodos {
         Scanner sc = new Scanner(System.in);
         if (sc.nextLine().equalsIgnoreCase("no")){
         System.out.println("Porfavor , ingrese los siguientes datos para continuar");
-        System.out.println("Nombre del Padre : ");
+        System.out.println("Nombre del Padre: ");
         Padre.setNombre();
-        System.out.println("Primer apellido del padre :");
+        System.out.println("Primer apellido del padre:");
         Padre.setApellido1();
         System.out.println("Segundo apellido del padre");
         Padre.setApellido2();
-        System.out.println("Edad del padre : ");
+        System.out.println("Edad del padre: ");
         Padre.setEdad();
         System.out.println("Nacionalidad del padre: ");
         Padre.setNacionalidad();
         this.Madre = new Padres(null, null, null, 0);
-        System.out.println("Nombre de la madre : ");
+        System.out.println("Nombre de la madre: ");
         Madre.setNombre();
-        System.out.println("Primer apellido de la madre :");
+        System.out.println("Primer apellido de la madre:");
         Madre.setApellido1();
         System.out.println("Segundo apellido de la madre");
         Madre.setApellido2();
-        System.out.println("Edad de la madre : ");
+        System.out.println("Edad de la madre: ");
         Madre.setEdad();
         System.out.println("Nacionalidad de la madre: ");
         Madre.setNacionalidad();
         }else{
             System.out.println("Porfavor , ingrese los siguientes datos para continuar");
-            System.out.println("Nombre del Padre o madre : ");
+            System.out.println("Nombre del Padre o madre: ");
             Padre.setNombre();
-            System.out.println("Primer apellido del padre o madre :");
+            System.out.println("Primer apellido del padre o madre:");
             Padre.setApellido1();
             System.out.println("Segundo apellido del padre o madre");
             Padre.setApellido2();
-            System.out.println("Edad del padre o madre : ");
+            System.out.println("Edad del padre o madre: ");
             Padre.setEdad();
             System.out.println("Nacionalidad del padre o madre: ");
             Padre.setNacionalidad();
