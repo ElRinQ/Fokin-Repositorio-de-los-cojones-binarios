@@ -3,24 +3,24 @@ import java.util.Scanner;
 
 
 
-public class Acta_De_Nacimiento implements Metodos {
+public class Actilla implements Metodos {
 
     Niño Descendente;
     Padres Padre, Madre;
     InfoDoc Documentillo;
 
-    public Acta_De_Nacimiento(Niño Registrado){
+    public Actilla(Niño Registrado){
         this.Descendente = Registrado;
     }
 
-    public Acta_De_Nacimiento(Niño Registrado, InfoDoc Info, Padres Papa, Padres Mama) {
+    public Actilla(Niño Registrado, InfoDoc Info, Padres Papa, Padres Mama) {
         this.Descendente = Registrado;
         this.Documentillo = Info;
         this.Padre = Papa;
         this.Madre = Mama;
     }
 
-    public Acta_De_Nacimiento(Niño Registrado, InfoDoc Info, Padres Soltero) {
+    public Actilla(Niño Registrado, InfoDoc Info, Padres Soltero) {
         this.Descendente = Registrado;
         this.Documentillo = Info;
         this.Padre = Soltero;
@@ -33,13 +33,12 @@ public class Acta_De_Nacimiento implements Metodos {
     }
 
     public void GenerarNiño() throws java.io.IOException {
-        
+        Descendente = new Niño();
         Descendente.setNombre();
-        Descendente.setApellidoP(Padre);
-        Descendente.setApellidoM(Madre);
+        Descendente.setApellidoP();
+        Descendente.setApellidoM();
         Descendente.setFechaCum();
         Descendente.GeneraFechaNaci();
-        System.out.println(Descendente.getFechaNaci());
         Descendente.setEstado();
         Descendente.setMunicipio();
         Descendente.setLocalidad();
@@ -48,14 +47,14 @@ public class Acta_De_Nacimiento implements Metodos {
         Descendente.GenerarCurp();
     }
 
-    public void GenerarPadres(){
+    public void GenerarPadres()throws java.io.IOException{
         this.Padre = new Padres(null, null, null, 0);
         System.out.println("----Bienvenido al generador de actas de nacimiento----");
         System.out.println("======================================================");
-        System.out.println("----------Es usted un padre o madre solter@-----------");
+        System.out.println("---------¿Es usted un padre o madre solter@?----------");
         Scanner sc = new Scanner(System.in);
         if (sc.nextLine().equalsIgnoreCase("no")){
-        System.out.println("Porfavor , ingrese los siguientes datos para continuar");
+        System.out.println("Porfavor , ingrese los siguientes datos para continuar\n");
         System.out.println("Nombre del Padre: ");
         Padre.setNombre();
         System.out.println("Primer apellido del padre:");
@@ -66,6 +65,7 @@ public class Acta_De_Nacimiento implements Metodos {
         Padre.setEdad();
         System.out.println("Nacionalidad del padre: ");
         Padre.setNacionalidad();
+        Descendente.Padre1 = Padre;
         this.Madre = new Padres(null, null, null, 0);
         System.out.println("Nombre de la madre: ");
         Madre.setNombre();
@@ -74,10 +74,12 @@ public class Acta_De_Nacimiento implements Metodos {
         System.out.println("Segundo apellido de la madre");
         Madre.setApellido2();
         System.out.println("Edad de la madre: ");
-        Madre.setEdad();
+        Madre.setEdad ();
         System.out.println("Nacionalidad de la madre: ");
         Madre.setNacionalidad();
+        Descendente.Padre2 = Madre;
         }else{
+            this.Padre = new Padres(null, null, null, 0);
             System.out.println("Porfavor , ingrese los siguientes datos para continuar");
             System.out.println("Nombre del Padre o madre: ");
             Padre.setNombre();
@@ -85,11 +87,12 @@ public class Acta_De_Nacimiento implements Metodos {
             Padre.setApellido1();
             System.out.println("Segundo apellido del padre o madre");
             Padre.setApellido2();
-            System.out.println("Edad del padre o madre: ");
+            System.out.println("Edad del padre o madre:");
             Padre.setEdad();
             System.out.println("Nacionalidad del padre o madre: ");
             Padre.setNacionalidad();
-            this.Madre = new Padres(null, null, null, 0);
+            Descendente.Padre1 = Padre;
+            
         }
     }
 

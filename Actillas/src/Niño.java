@@ -9,7 +9,7 @@ public class Niño {
     public static DecimalFormat DosC = new DecimalFormat("00");
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
 
-    protected String Nombre, Apellido1, Apellido2 = null, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
+    protected String Nombre, Apellido1, Apellido2, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
     private char Sexo;
     private boolean Registrado, DosTutores;
     private int Dia, Mes, Año;
@@ -17,12 +17,13 @@ public class Niño {
     public static Scanner SC = new Scanner(System.in);
 
     public Niño (){
-        this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
     }
-
+    /* 
     // Constructor para cuando tine 2 padres
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
             char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
+        this.Padre1 = Papa;
+        this.Padre2 = Mama;
         this.Nombre = Nombre;
         this.Apellido1 = Papa.getApellido1();
         this.Apellido2 = Mama.getApellido1();
@@ -42,6 +43,7 @@ public class Niño {
     // Constructor para cuando tiene solo un padre
     public Niño(Padres Soltero, String Nombre, String Localidad, String Municipio, String Estado,
             char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
+        this.Padre1 = Soltero;        
         this.Nombre = Nombre;
         this.Apellido1 = Soltero.getApellido1();
         this.Dia = Dia;
@@ -56,7 +58,7 @@ public class Niño {
         this.DosTutores = false;
         this.GenerarCurp();
 
-    }
+    }*/
 
 
     public void GeneraFechaNaci() {
@@ -251,6 +253,116 @@ public class Niño {
         this.HomoClave = String.valueOf(Digito1).concat(String.valueOf(Digito2));
     }
 
+    // Setters
+
+    public void setSexo() throws java.io.IOException {
+        System.out.println("Ingrese el sexo del niño : ");
+        this.Sexo = SelctorDeLetra(Leer.readLine(), 1);
+    }
+
+    public void setRegistro() throws java.io.IOException {
+        do {
+            System.out.println("Estado de registro: ");
+            char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
+
+            if (regisTemp == 'M') {
+                this.Registrado = false;
+                break;
+            } else {
+                if (regisTemp == 'V') {
+                    this.Registrado = true;
+                    break;
+                } else {
+                    System.out.println(
+                            "Estado invalido, porfavor llene con el estado de vivo o muerto segun sea el caso");
+                }
+            }
+        } while (true);
+    }
+
+    public void setNombre() throws java.io.IOException {
+        System.out.println("Nombre del registrado:");
+        this.Nombre = Leer.readLine();
+    }
+
+    public void setApellidoP(){
+        this.Apellido2 = this.Padre1.getApellido1();
+    }
+
+
+    public void setApellidoM(){
+        DosTutores = true;
+        this.Apellido2 = this.Padre2.getApellido1();
+    }
+
+    public void setDia() throws java.io.IOException {
+        do {
+            try {
+                System.out.println("Dia de nacimiento: ");
+                this.Dia = Integer.parseInt(Leer.readLine());
+                if (Dia > 0 && Dia <= 31) {
+                    break;
+                } else {
+                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
+                }
+            } catch (NumberFormatException Noint) {
+                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
+            }
+        } while (true);
+
+    }
+
+    public void setMes() throws java.io.IOException {
+        do {
+            try {
+                System.out.println("Mes de nacimiento: ");
+                this.Mes = Integer.parseInt(Leer.readLine());
+                if (Mes > 0 && Mes <= 12) {
+                    break;
+                } else {
+                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
+                }
+            } catch (NumberFormatException Noint) {
+                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
+            }
+        } while (true);
+
+    }
+
+    public void setAño() throws java.io.IOException {
+        do {
+            try {
+                System.out.println("Año de nacimiento: ");
+                this.Año = Integer.parseInt(Leer.readLine());
+                break;
+            } catch (NumberFormatException Noint) {
+                System.out.println("\nSolo se aceptan numeros enteros positivos\n");
+            }
+        } while (true);
+    }
+
+    public void setFechaCum()throws java.io.IOException{
+     this.setDia();
+     this.setAño();
+     this.setMes();
+    }
+
+    public void setEstado() throws java.io.IOException {
+        System.out.println("Estado de nacimiento: ");
+        this.Estado = Leer.readLine();
+    }
+
+    public void setMunicipio() throws java.io.IOException {
+        System.out.println("Municipio de nacimiento: ");
+        this.Municipio = Leer.readLine();
+    }
+
+    public void setLocalidad() throws java.io.IOException {
+        System.out.println("Localidad de nacimiento: ");
+        this.Localidad = Leer.readLine();
+    }
+
+    
     // Getters
     public String getNombre() {
         return Nombre;
@@ -306,122 +418,6 @@ public class Niño {
 
     public String getHomoClave() {
         return HomoClave;
-    }
-
-    // Setters
-
-    public void setSexo() throws java.io.IOException {
-        System.out.println("Ingrese el sexo del niño : ");
-        this.Sexo = SelctorDeLetra(Leer.readLine(), 1);
-    }
-
-    public void setRegistro() throws java.io.IOException {
-        do {
-            System.out.println("Estado de registro: ");
-            char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
-
-            if (regisTemp == 'M') {
-                this.Registrado = false;
-                break;
-            } else {
-                if (regisTemp == 'V') {
-                    this.Registrado = true;
-                    break;
-                } else {
-                    System.out.println(
-                            "Estado invalido, porfavor llene con el estado de vivo o muerto segun sea el caso");
-                }
-            }
-        } while (true);
-    }
-
-    public void setNombre() throws java.io.IOException {
-        System.out.println("Nombre del registrado:");
-        this.Nombre = Leer.readLine();
-    }
-
-    public void setApellidoP(Padres Padre)throws java.io.IOException{
-        Padre1 = Padre;
-        this.Apellido1 = Padre.getApellido1();
-    }
-
-    public void setApellido2() throws java.io.IOException {
-        System.out.println("Segundo apelllido: ");
-        this.Apellido2 = Leer.readLine();
-    }
-
-    public void setDia() throws java.io.IOException {
-        do {
-            try {
-                System.out.println("Dia de nacimiento: ");
-                this.Dia = Integer.parseInt(Leer.readLine());
-                if (Dia > 0 && Dia <= 31) {
-                    break;
-                } else {
-                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
-                }
-            } catch (NumberFormatException Noint) {
-                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
-            }
-        } while (true);
-
-    }
-
-    public void setMes() throws java.io.IOException {
-        do {
-            try {
-                System.out.println("Mes de nacimiento: ");
-                this.Mes = Integer.parseInt(Leer.readLine());
-                if (Mes > 0 && Mes <= 12) {
-                    break;
-                } else {
-                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
-                }
-            } catch (NumberFormatException Noint) {
-                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
-            }
-        } while (true);
-
-    }
-
-    public void setAño() throws java.io.IOException {
-        do {
-            try {
-                System.out.println("Año de nacimiento: ");
-                this.Año = Integer.parseInt(Leer.readLine());
-                break;
-            } catch (NumberFormatException Noint) {
-                System.out.println("\nSolo se aceptan numeros enteros positivos\n");
-            }
-        } while (true);
-    }
-
-    public void setApellidoM(Padres Madre)throws java.io.IOException{
-        DosTutores = true;
-        Padre2 = Madre;
-        this.Apellido2 = Madre.getApellido1();
-
-    }
-
-    public void setFechaCum()throws java.io.IOException{
-     this.setDia();
-     this.setAño();
-     this.setMes();
-    }
-
-    public void setEstado() throws java.io.IOException {
-        System.out.println("Estado de nacimiento: ");
-        this.Estado = Leer.readLine();
-    }
-
-    public void setMunicipio() throws java.io.IOException {
-        System.out.println("Municipio de nacimiento: ");
-        this.Municipio = Leer.readLine();
-    }
-
-    public void setLocalidad() throws java.io.IOException {
-        System.out.println("Localidad de nacimiento: ");
-        this.Localidad = Leer.readLine();
     }
 
 }

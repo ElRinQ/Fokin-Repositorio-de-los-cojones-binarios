@@ -1,10 +1,12 @@
-import java.util.InputMismatchException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Padres {
     private String Nombre, Apellido1, Apellido2, Nacionalidad;
     private int Edad;
-    Scanner SC1 = new Scanner(System.in);
+    public static Scanner SC1 = new Scanner(System.in);
+    public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
     
     public Padres (){
     
@@ -24,27 +26,6 @@ public class Padres {
         this.Apellido1 = Apellido1;
         this.Nacionalidad = Nacionalidad;
         this.Edad = Edad;
-    }
-
-    // Getters para los atributos
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public String getApellido1() {
-        return Apellido1;
-    }
-
-    public String getApellido2() {
-        return Apellido2;
-    }
-
-    public String getNacionalidad() {
-        return Nacionalidad;
-    }
-
-    public int getEdad() {
-        return Edad;
     }
 
     // Setters para los atributos
@@ -68,15 +49,36 @@ public class Padres {
         this.Nacionalidad = nacionalidad;
     }
 
-    public void setEdad(){
+    public void setEdad()throws java.io.IOException{
         do {
             try {
-                 int edad = SC1.nextInt();
-                 this.Edad = edad;
+                 this.Edad = Integer.parseInt(Leer.readLine());
                  break;
-            }catch(InputMismatchException e){
-                System.out.println("Entrada invalida, ingrese una edad expresada en enteros");
+            }catch(NumberFormatException e){
+                System.out.println("\nEntrada invalida, ingrese una edad expresada en enteros");
             }
         } while (true);
     }
+
+        // Getters para los atributos
+        public String getNombre() {
+            return Nombre;
+        }
+    
+        public String getApellido1() {
+            return Apellido1;
+        }
+    
+        public String getApellido2() {
+            return Apellido2;
+        }
+    
+        public String getNacionalidad() {
+            return Nacionalidad;
+        }
+    
+        public int getEdad() {
+            return Edad;
+        }
+            
 }
