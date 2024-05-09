@@ -8,7 +8,7 @@ public class Doc implements Metodos{
     InfoDoc Doc;
     InfoDoc[][] Documentillo;
     Niño[][] Datos;
-    Acta_De_Nacimiento Acta;
+    Acta_De_Nacimiento Acta = new Acta_De_Nacimiento(Niño);
     @Override
     public void Generar() throws IOException {
         
