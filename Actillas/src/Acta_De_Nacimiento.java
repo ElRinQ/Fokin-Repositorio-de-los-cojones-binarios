@@ -30,23 +30,22 @@ public class Acta_De_Nacimiento implements Metodos {
     public void Generar() throws java.io.IOException{
         GenerarPadres();
         GenerarNiño();
-
-
     }
 
-    public void GenerarNiño() throws java.io.IOException{
+    public void GenerarNiño() throws java.io.IOException {
+        
         Descendente.setNombre();
-        Descendente.setApellido1();
-        Descendente.setApellido2();
-        Descendente.setDia();
-        Descendente.setMes();
-        Descendente.setAño();
+        Descendente.setApellidoP(Padre);
+        Descendente.setApellidoM(Madre);
+        Descendente.setFechaCum();
         Descendente.GeneraFechaNaci();
+        System.out.println(Descendente.getFechaNaci());
         Descendente.setEstado();
         Descendente.setMunicipio();
         Descendente.setLocalidad();
         Descendente.setSexo();
         Descendente.setRegistro();
+        Descendente.GenerarCurp();
     }
 
     public void GenerarPadres(){
@@ -57,13 +56,13 @@ public class Acta_De_Nacimiento implements Metodos {
         Scanner sc = new Scanner(System.in);
         if (sc.nextLine().equalsIgnoreCase("no")){
         System.out.println("Porfavor , ingrese los siguientes datos para continuar");
-        System.out.println("Nombre del Padre : ");
+        System.out.println("Nombre del Padre: ");
         Padre.setNombre();
         System.out.println("Primer apellido del padre :");
         Padre.setApellido1();
         System.out.println("Segundo apellido del padre");
         Padre.setApellido2();
-        System.out.println("Edad del padre : ");
+        System.out.println("Edad del padre: ");
         Padre.setEdad();
         System.out.println("Nacionalidad del padre: ");
         Padre.setNacionalidad();

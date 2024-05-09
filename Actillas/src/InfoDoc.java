@@ -1,28 +1,45 @@
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 
-public class InfoDoc {
+public class InfoDoc implements Metodos {
 
-    public static DecimalFormat DosC = new DecimalFormat("00");
     public static DecimalFormat LB = new DecimalFormat("0000");
     public static DecimalFormat ACT = new DecimalFormat("000,000,000,000");
+    public static Scanner SC;
 
     private int Libro, Acta, DiaR, MesR, AñoR;
     private String EstadoR, MunicipioR, LocalidadR, FechaR, LibroFormat, NumActaFormat;
 
-    public InfoDoc(int Libro, int Acta, int DiaR, int MesR, int AñoR, String EstadoR, String MunicipioR,
-            String LocalidadR) {
+    public InfoDoc(){
+        String FeAc = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        this.FechaR = FeAc;
+    }
+
+    public InfoDoc(int Libro, int Acta, String EstadoR, String MunicipioR, String LocalidadR) {
         this.Libro = Libro;
         this.Acta = Acta;
-        this.DiaR = DiaR;
-        this.MesR = MesR;
-        this.AñoR = AñoR;
         this.EstadoR = EstadoR;
         this.MunicipioR = MunicipioR;
         this.LocalidadR = LocalidadR;
-        this.FechaR = (DosC.format(DiaR) + "/" + DosC.format(MesR) + "/" + DosC.format(AñoR));
         this.LibroFormat = LB.format(Libro);
         this.NumActaFormat = ACT.format(Acta);
     }
+
+    @Override
+    public void Generar() throws IOException {
+        
+
+    }
+
+    public void setEstado(){
+        
+
+    }
+
+
 
     //Getters 
     public int getLibro() {
@@ -68,4 +85,6 @@ public class InfoDoc {
     public String getNumActaFormat(){
         return NumActaFormat;
     }
+
+
 }

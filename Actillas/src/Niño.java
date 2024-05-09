@@ -1,8 +1,8 @@
 
-import java.text.DecimalFormat;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class Niño {
 
@@ -13,6 +13,12 @@ public class Niño {
     private char Sexo;
     private boolean Registrado, DosTutores;
     private int Dia, Mes, Año;
+    protected Padres Padre1 , Padre2;
+    public static Scanner SC = new Scanner(System.in);
+
+    public Niño (){
+        this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
+    }
 
     // Constructor para cuando tine 2 padres
     public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
@@ -23,7 +29,6 @@ public class Niño {
         this.Registrado = Registrado;
         this.Dia = Dia;
         this.Mes = Mes;
-        this.Año = Año;
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
         this.Localidad = Localidad;
         this.Municipio = Municipio;
@@ -54,6 +59,7 @@ public class Niño {
     }
 
     public void GeneraFechaNaci(){
+
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
     }
 
@@ -334,56 +340,28 @@ public class Niño {
         this.Nombre = Leer.readLine();
     }
 
-    public void setApellido1() throws java.io.IOException {
-        System.out.println("Primere apellido: ");
-        this.Apellido1 = Leer.readLine();
+    public void setApellidoP(Padres Padre)throws java.io.IOException{
+        Padre1 = Padre;
+        this.Apellido1 = Padre.getApellido1();
     }
 
-    public void setApellido2() throws java.io.IOException {
-        System.out.println("Segundo apelllido: ");
-        this.Apellido2 = Leer.readLine();
-    }
-
-    public void setDia() throws java.io.IOException {
-        do {
-            try {
-                System.out.println("Dia de nacimiento: ");
-                this.Dia = Integer.parseInt(Leer.readLine());
-                if(Dia >0 && Dia <= 31){
-                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
-                }
-            } catch (NumberFormatException Noint) {
-                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-31\n");
-            }
-        } while (true);
+    public void setApellidoM(Padres Madre)throws java.io.IOException{
+        DosTutores = true;
+        Padre2 = Madre;
+        this.Apellido2 = Madre.getApellido1();
 
     }
 
-    public void setMes() throws java.io.IOException {
-        do {
-            try {
-                System.out.println("Dia de nacimiento: ");
-                this.Mes = Integer.parseInt(Leer.readLine());
-                if(Mes > 0 && Mes <= 12){
-                    System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
-                }
-            } catch (NumberFormatException Noint) {
-                System.out.println("\nSolo se aceptan numeros enteros positivos del rango 1-12\n");
-            }
-        } while (true);
-
-    }
-
-    public void setAño() throws java.io.IOException {
-        do {
-            try {
-                System.out.println("Dia de nacimiento: ");
-                this.Año = Integer.parseInt(Leer.readLine());
-            } catch (NumberFormatException Noint) {
-                System.out.println("\nSolo se aceptan numeros enteros positivos\n");
-            }
-        } while (true);
-
+    public void setFechaCum(){
+        System.out.println("Dia de nacimiento :");
+        int dia = SC.nextInt();
+        this.Dia = dia;
+        System.out.println("Mes de nacimiento :");
+        int mes = SC.nextInt();
+        this.Mes = mes;
+        System.out.println("Año de nacimiento : ");
+        int año = SC.nextInt();
+        this.Año = año;
     }
 
     public void setEstado() throws java.io.IOException {
@@ -400,6 +378,4 @@ public class Niño {
         System.out.println("Localidad de nacimiento: ");
         this.Localidad = Leer.readLine();
     }
-
-
 }
