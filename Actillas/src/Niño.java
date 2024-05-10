@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class Niño {
+public class Niño implements Metodos {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
@@ -17,6 +17,7 @@ public class Niño {
     public static Scanner SC = new Scanner(System.in);
 
     public Niño (){
+        
     }
     /* 
     // Constructor para cuando tine 2 padres
@@ -71,26 +72,26 @@ public class Niño {
         this.GenerarHomoClave();
         if (DosTutores == true) {
             // Caso en que tiene 2 tutores todo se puede llenar correctamente
-            this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3)
-                    + this.SelctorDeLetra(this.getApellido2(), 1) + "" + this.SelctorDeLetra(this.getNombre(), 1) + ""
-                    + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
-                    + this.SelctorDeLetra(String.valueOf(this.getAño()), 5)
-                    + DosC.format(this.getMes()) + "" + DosC.format(this.getDia()) + "" + this.getSexo() + ""
-                    + this.SelctorDeLetra(this.getEstado(), 1) + "" + this.SelctorDeLetra(this.getEstado(), 4) + ""
-                    + this.SelctorDeLetra(this.getApellido1(), 2) + "" + this.SelctorDeLetra(this.getApellido2(), 2)
-                    + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
+            this.Curp = this.SelctorDeLetra(Padre1.getApellido1(), 1) + "" + this.SelctorDeLetra(Padre1.getApellido1(), 3)
+                + this.SelctorDeLetra(Padre2.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getNombre(), 1) + ""
+                + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
+                + this.SelctorDeLetra(String.valueOf(this.getAño()), 5)
+                + DosC.format(this.getMes()) + "" + DosC.format(this.getDia()) + "" + this.getSexo() + ""
+                + this.SelctorDeLetra(this.getEstado(), 1) + "" + this.SelctorDeLetra(this.getEstado(), 4) + ""
+                + this.SelctorDeLetra(Padre1.getApellido1(), 2) + "" + this.SelctorDeLetra(Padre2.getApellido1(), 2)
+                + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
 
         } else {
             // Caso en el que tiene solo uno, los datos que no pueden ser llenados se
             // remplazan por X
-            this.Curp = this.SelctorDeLetra(this.getApellido1(), 1) + "" + this.SelctorDeLetra(this.getApellido1(), 3)
-                    + "X" + this.SelctorDeLetra(this.getNombre(), 1) + ""
-                    + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
-                    + this.SelctorDeLetra(String.valueOf(this.getAño()), 5)
-                    + DosC.format(this.getMes()) + "" + DosC.format(this.getDia()) + "" + this.getSexo() + ""
-                    + this.SelctorDeLetra(this.getEstado(), 1) + "" + this.SelctorDeLetra(this.getEstado(), 4) + ""
-                    + this.SelctorDeLetra(this.getApellido1(), 2) + "X"
-                    + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
+            this.Curp = this.SelctorDeLetra(Padre1.getApellido1(), 1) + "" + this.SelctorDeLetra(Padre1.getApellido1(), 3)
+                + "X" + this.SelctorDeLetra(this.getNombre(), 1) + ""
+                + this.SelctorDeLetra(String.valueOf(this.getAño()), 6) + ""
+                + this.SelctorDeLetra(String.valueOf(this.getAño()), 5)
+                + DosC.format(this.getMes()) + "" + DosC.format(this.getDia()) + "" + this.getSexo() + ""
+                + this.SelctorDeLetra(this.getEstado(), 1) + "" + this.SelctorDeLetra(this.getEstado(), 4) + ""
+                + this.SelctorDeLetra(Padre1.getApellido1(), 2) + "X"
+                + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
         }
     }
 
@@ -280,19 +281,38 @@ public class Niño {
         } while (true);
     }
 
+    public void Generar() throws java.io.IOException {
+        Niño Descendente = new Niño();
+        Descendente.setNombre();
+        Descendente.setApellidoP(Padre1);
+        Descendente.setApellidoM(Padre2);
+        Descendente.setFechaCum();
+        Descendente.GeneraFechaNaci();
+        System.out.println(Descendente.getFechaNaci());
+        Descendente.setEstado();
+        Descendente.setMunicipio();
+        Descendente.setLocalidad();
+        Descendente.setSexo();
+        Descendente.setRegistro();
+        Descendente.GenerarCurp();
+    }
+
+
     public void setNombre() throws java.io.IOException {
         System.out.println("Nombre del registrado:");
         this.Nombre = Leer.readLine();
     }
 
-    public void setApellidoP(){
-        this.Apellido2 = this.Padre1.getApellido1();
+    public void setApellidoP(Padres Padre){
+        this.Padre1 = Padre;
+        this.Apellido2 = Padre.getApellido1();
     }
+    
 
-
-    public void setApellidoM(){
+    public void setApellidoM(Padres Madre){
         DosTutores = true;
-        this.Apellido2 = this.Padre2.getApellido1();
+        this.Padre2 = Madre;
+        this.Apellido2 = Madre.getApellido1();
     }
 
     public void setDia() throws java.io.IOException {

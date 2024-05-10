@@ -1,12 +1,14 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class Padres {
+public class Padres implements Metodos {
     private String Nombre, Apellido1, Apellido2, Nacionalidad;
     private int Edad;
     public static Scanner SC1 = new Scanner(System.in);
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
+    private Boolean DosTutores;
     
     public Padres (){
     
@@ -27,6 +29,53 @@ public class Padres {
         this.Nacionalidad = Nacionalidad;
         this.Edad = Edad;
     }
+
+        public void Generar() throws IOException{
+        
+        System.out.println("----Bienvenido al generador de actas de nacimiento----");
+        System.out.println("======================================================");
+        System.out.println("----------Es usted un padre o madre solter@-----------");
+        String Entrada = SC1.nextLine();
+        if (Entrada.toLowerCase().contains("n") && Entrada.toLowerCase().contains("o")){
+        Padres Padre = new Padres();
+        System.out.println("Porfavor , ingrese los siguientes datos para continuar");
+        System.out.println("Nombre del Padre: ");
+        Padre.setNombre();
+        System.out.println("Primer apellido del padre :");
+        Padre.setApellido1();
+        System.out.println("Segundo apellido del padre");
+        Padre.setApellido2();
+        System.out.println("Edad del padre: ");
+        Padre.setEdad();
+        System.out.println("Nacionalidad del padre: ");
+        Padre.setNacionalidad();
+        Padres Madre = new Padres();
+        System.out.println("Nombre de la madre : ");
+        Madre.setNombre();
+        System.out.println("Primer apellido de la madre :");
+        Madre.setApellido1();
+        System.out.println("Segundo apellido de la madre");
+        Madre.setApellido2();
+        System.out.println("Edad de la madre : ");
+        Madre.setEdad();
+        System.out.println("Nacionalidad de la madre: ");
+        Madre.setNacionalidad();
+        }else{
+            Padres Padre = new Padres();
+            System.out.println("Porfavor , ingrese los siguientes datos para continuar");
+            System.out.println("Nombre del Padre o madre : ");
+            Padre.setNombre();
+            System.out.println("Primer apellido del padre o madre :");
+            Padre.setApellido1();
+            System.out.println("Segundo apellido del padre o madre");
+            Padre.setApellido2();
+            System.out.println("Edad del padre o madre : ");
+            Padre.setEdad();
+            System.out.println("Nacionalidad del padre o madre: ");
+            Padre.setNacionalidad();
+        }
+    }
+
 
     // Setters para los atributos
     public void setNombre() {
@@ -55,7 +104,7 @@ public class Padres {
                  this.Edad = Integer.parseInt(Leer.readLine());
                  break;
             }catch(NumberFormatException e){
-                System.out.println("\nEntrada invalida, ingrese una edad expresada en enteros");
+                System.out.println("Entrada invalida, ingrese una edad expresada en enteros");
             }
         } while (true);
     }

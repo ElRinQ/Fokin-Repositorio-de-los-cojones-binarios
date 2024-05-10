@@ -5,13 +5,14 @@ public class App {
         Padres P1 = new Padres("Enrique", "Segura", "Romo", 32);
         Padres P2 = new Padres("Ana Alicia", "Gonzalez", "Mendoza", "Mexicana", 26);
         Niño N1 = new Niño();
-        Niño N2 = new Niño();
+        
 
         InfoDoc Nueva_Info = new InfoDoc();
-        Actilla Nueva_Acta_De_Nacimiento = new Actilla(N1);
+        Acta_De_Nacimiento Actilla = new Acta_De_Nacimiento(N1);
 
-        Doc Actilla = new Doc();
+        Doc ActillaFinal = new Doc();
         Actilla.Generar();
+        System.out.println(N1.getCurp());
 
         
     }
