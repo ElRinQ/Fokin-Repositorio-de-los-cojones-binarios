@@ -2,8 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class InfoDoc implements Metodos {
@@ -13,13 +11,24 @@ public class InfoDoc implements Metodos {
     public static DecimalFormat ACT = new DecimalFormat("000,000,000,000");
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
 
+    private static int contador = 1;
     private int Libro, Acta, DiaR, MesR, AñoR;
     private String EstadoR, MunicipioR, LocalidadR, FechaR, LibroFormat, NumActaFormat;
 
 
     @Override
     public void Generar() throws IOException {
-        
+        Acta = contador;
+        Libro = (contador/10000)+1;
+        System.out.println("======================================================");
+        System.out.println("--------------Informacion del documento---------------");
+        System.out.println("======================================================");
+        this.setEstadoR();
+        this.setMunicipioR();
+        this.setLocalidadR();
+        this.setAñoR();
+        this.setMesR();
+        this.setDiaR();   
 
     }
 
@@ -38,7 +47,7 @@ public class InfoDoc implements Metodos {
     public void setMesR() throws java.io.IOException {
         do {
             try {
-                System.out.println("Mes de nacimiento: ");
+                System.out.println("Mes de registro: ");
                 this.MesR = Integer.parseInt(Leer.readLine());
                 if (MesR > 0 && MesR <= 12) {
                     break;
@@ -55,7 +64,7 @@ public class InfoDoc implements Metodos {
     public void setDiaR() throws java.io.IOException {
         do {
             try {
-                System.out.println("Dia de nacimiento: ");
+                System.out.println("Dia de registro: ");
                 this.DiaR = Integer.parseInt(Leer.readLine());
                 if (DiaR > 0 && DiaR <= 31) {
                     break;
@@ -79,12 +88,12 @@ public class InfoDoc implements Metodos {
     }
 
     public void setMunicipioR() throws java.io.IOException {
-        System.out.println("Municipio de nacimiento: ");
+        System.out.println("Municipio de registro: ");
         this.MunicipioR = Leer.readLine();
     }
 
     public void setLocalidadR() throws java.io.IOException {
-        System.out.println("Localidad de nacimiento: ");
+        System.out.println("Localidad de registro: ");
         this.LocalidadR = Leer.readLine();
     }
 

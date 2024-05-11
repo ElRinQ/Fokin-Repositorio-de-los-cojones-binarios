@@ -13,7 +13,7 @@ public class Niño implements Metodos {
     private char Sexo;
     private boolean Registrado, DosTutores;
     private int Dia, Mes, Año;
-    protected Padres Padre1 , Padre2;
+    protected static Padres Padre1 , Padre2;
     public static Scanner SC = new Scanner(System.in);
 
 
@@ -210,6 +210,13 @@ public class Niño implements Metodos {
     }
 
     // Setters
+    public static void setPadre1(Padres P1){
+        Padre1 = P1;
+    }
+
+    public static void setPadre2(Padres P2){
+        Padre2 = P2;
+    }
 
     public void setSexo() throws java.io.IOException {
         System.out.println("Ingrese el sexo del niño : ");
@@ -218,7 +225,7 @@ public class Niño implements Metodos {
 
     public void setRegistro() throws java.io.IOException {
         do {
-            System.out.println("Estado de registro: ");
+            System.out.println("Estado de registro (Vivo/Muerto): ");
             char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
 
             if (regisTemp == 'M') {
@@ -238,12 +245,15 @@ public class Niño implements Metodos {
 
     public void Generar() throws java.io.IOException {
         Niño Descendente = new Niño();
+        System.out.println("======================================================");
+        System.out.println("-------------Informacion del Resgistrado--------------");
+        System.out.println("======================================================");
         Descendente.setNombre();
         Descendente.setApellidoP();
         Descendente.setApellidoM();
         Descendente.setFechaCum();
         Descendente.GeneraFechaNaci();
-        System.out.println(Descendente.getFechaNaci());
+        
         Descendente.setEstado();
         Descendente.setMunicipio();
         Descendente.setLocalidad();
@@ -317,8 +327,8 @@ public class Niño implements Metodos {
 
     public void setFechaCum()throws java.io.IOException{
      this.setDia();
-     this.setAño();
      this.setMes();
+     this.setAño();
     }
 
     public void setEstado() throws java.io.IOException {

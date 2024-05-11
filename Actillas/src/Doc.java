@@ -3,20 +3,22 @@ import java.io.IOException;
 
 public class Doc implements Metodos{
 
-    Padres Padre,Madre;
-    Niño NiñoL;
-    InfoDoc Doc;
-    InfoDoc[][] Documentillo;
-    Niño[][] Datos;
-    Acta_De_Nacimiento Acta = new Acta_De_Nacimiento(NiñoL);
+    Padres Padre = new Padres();
+    Padres Madre = new Padres();
+    Niño NiñoL = new Niño();
+    InfoDoc InfoD = new InfoDoc();
+
+    InfoDoc[][] Documentillo =  new InfoDoc[4][6];
+    Niño[][] Datos =  new Niño[7][7];
     
     @Override
     public void Generar() throws IOException {
+            Padre.Generar(); 
+            NiñoL.Generar();
+            InfoD.Generar();
         
-
             try {
 
-                this.Acta.Generar();
                 FileWriter DocumentoFinal= new FileWriter("Acta De Nacimiento "+this.NiñoL.getCurp()+".txt");
                 DocumentoFinal.write("                                           ESTADOS UNIDOS MEXICANOS                                           ");
                 DocumentoFinal.write("\n                                       GOBIERNO DEL ESTADO DE SONORA                                        ");
@@ -31,9 +33,9 @@ public class Doc implements Metodos{
                     }
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
                     //DocumentoFinal.write(Doc.getOficialia() + "\t");
-                    DocumentoFinal.write(this.Doc.getLibro() + "\t");
-                    DocumentoFinal.write(this.Doc.getActa() + "\t");
-                    DocumentoFinal.write(this.Doc.getFechaR() + "\t");
+                    DocumentoFinal.write(this.InfoD.getLibro() + "\t");
+                    DocumentoFinal.write(this.InfoD.getActa() + "\t");
+                    DocumentoFinal.write(this.InfoD.getFechaR() + "\t");
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
                 }
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
