@@ -9,23 +9,6 @@ public class Actilla implements Metodos {
     Padres Padre, Madre;
     InfoDoc Documentillo;
 
-    public Actilla(Niño Registrado){
-        this.Descendente = Registrado;
-    }
-
-    public Actilla(Niño Registrado, InfoDoc Info, Padres Papa, Padres Mama) {
-        this.Descendente = Registrado;
-        this.Documentillo = Info;
-        this.Padre = Papa;
-        this.Madre = Mama;
-    }
-
-    public Actilla(Niño Registrado, InfoDoc Info, Padres Soltero) {
-        this.Descendente = Registrado;
-        this.Documentillo = Info;
-        this.Padre = Soltero;
-    }
-
     @Override
     public void Generar() throws java.io.IOException{
         GenerarPadres();

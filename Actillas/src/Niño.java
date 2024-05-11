@@ -16,51 +16,6 @@ public class Niño implements Metodos {
     protected Padres Padre1 , Padre2;
     public static Scanner SC = new Scanner(System.in);
 
-    public Niño (){
-        
-    }
-    /* 
-    // Constructor para cuando tine 2 padres
-    public Niño(Padres Papa, Padres Mama, String Nombre, String Localidad, String Municipio, String Estado,
-            char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
-        this.Padre1 = Papa;
-        this.Padre2 = Mama;
-        this.Nombre = Nombre;
-        this.Apellido1 = Papa.getApellido1();
-        this.Apellido2 = Mama.getApellido1();
-        this.Registrado = Registrado;
-        this.Dia = Dia;
-        this.Mes = Mes;
-        this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
-        this.Localidad = Localidad;
-        this.Municipio = Municipio;
-        this.Estado = Estado;
-        this.Sexo = Sexo;
-        this.DosTutores = true;
-        this.GenerarCurp();
-
-    }
-
-    // Constructor para cuando tiene solo un padre
-    public Niño(Padres Soltero, String Nombre, String Localidad, String Municipio, String Estado,
-            char Sexo, boolean Registrado, int Dia, int Mes, int Año) {
-        this.Padre1 = Soltero;        
-        this.Nombre = Nombre;
-        this.Apellido1 = Soltero.getApellido1();
-        this.Dia = Dia;
-        this.Mes = Mes;
-        this.Año = Año;
-        this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
-        this.Localidad = Localidad;
-        this.Municipio = Municipio;
-        this.Estado = Estado;
-        this.Sexo = Sexo;
-        this.Registrado = Registrado;
-        this.DosTutores = false;
-        this.GenerarCurp();
-
-    }*/
-
 
     public void GeneraFechaNaci() {
         this.FechaNaci = (DosC.format(Dia) + "/" + DosC.format(Mes) + "/" + DosC.format(Año));
@@ -284,8 +239,8 @@ public class Niño implements Metodos {
     public void Generar() throws java.io.IOException {
         Niño Descendente = new Niño();
         Descendente.setNombre();
-        Descendente.setApellidoP(Padre1);
-        Descendente.setApellidoM(Padre2);
+        Descendente.setApellidoP();
+        Descendente.setApellidoM();
         Descendente.setFechaCum();
         Descendente.GeneraFechaNaci();
         System.out.println(Descendente.getFechaNaci());
@@ -303,16 +258,15 @@ public class Niño implements Metodos {
         this.Nombre = Leer.readLine();
     }
 
-    public void setApellidoP(Padres Padre){
-        this.Padre1 = Padre;
-        this.Apellido2 = Padre.getApellido1();
+    public void setApellidoP(){
+        this.Apellido2 = Padre1.getApellido1();
     }
     
 
-    public void setApellidoM(Padres Madre){
+    public void setApellidoM(){
         DosTutores = true;
-        this.Padre2 = Madre;
-        this.Apellido2 = Madre.getApellido1();
+       
+        this.Apellido2 = Padre1.getApellido1();
     }
 
     public void setDia() throws java.io.IOException {

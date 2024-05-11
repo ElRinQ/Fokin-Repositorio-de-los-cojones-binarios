@@ -3,32 +3,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class Padres implements Metodos {
-    private String Nombre, Apellido1, Apellido2, Nacionalidad;
-    private int Edad;
+public class Padres implements Metodos {    
     public static Scanner SC1 = new Scanner(System.in);
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
-    private Boolean DosTutores;
-    
-    public Padres (){
-    
-    }
-    // Constructor para cuando el padre tiene 2 apellidos
-    public Padres(String Nombre, String Apellido1, String Apellido2, String Nacionalidad, int Edad) {
-        this.Nombre = Nombre;
-        this.Apellido1 = Apellido1;
-        this.Apellido2 = Apellido2;
-        this.Nacionalidad = Nacionalidad;
-        this.Edad = Edad;
-    }
 
-    // Constructor para cuando el padre tiene solo un apellido
-    public Padres(String Nombre, String Apellido1, String Nacionalidad, int Edad) {
-        this.Nombre = Nombre;
-        this.Apellido1 = Apellido1;
-        this.Nacionalidad = Nacionalidad;
-        this.Edad = Edad;
-    }
+    private String Nombre, Apellido1, Apellido2, Nacionalidad;
+    private int Edad;
+    private Boolean DosTutores;
+
 
         public void Generar() throws IOException{
         

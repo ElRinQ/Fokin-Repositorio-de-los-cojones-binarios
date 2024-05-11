@@ -4,11 +4,12 @@ import java.io.IOException;
 public class Doc implements Metodos{
 
     Padres Padre,Madre;
-    Niño Niño;
+    Niño NiñoL;
     InfoDoc Doc;
     InfoDoc[][] Documentillo;
     Niño[][] Datos;
-    Acta_De_Nacimiento Acta = new Acta_De_Nacimiento(Niño);
+    Acta_De_Nacimiento Acta = new Acta_De_Nacimiento(NiñoL);
+    
     @Override
     public void Generar() throws IOException {
         
@@ -16,7 +17,7 @@ public class Doc implements Metodos{
             try {
 
                 this.Acta.Generar();
-                FileWriter DocumentoFinal= new FileWriter("Acta De Nacimiento.txt");
+                FileWriter DocumentoFinal= new FileWriter("Acta De Nacimiento "+this.NiñoL.getCurp()+".txt");
                 DocumentoFinal.write("                                           ESTADOS UNIDOS MEXICANOS                                           ");
                 DocumentoFinal.write("\n                                       GOBIERNO DEL ESTADO DE SONORA                                        ");
                 DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
@@ -30,9 +31,9 @@ public class Doc implements Metodos{
                     }
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
                     //DocumentoFinal.write(Doc.getOficialia() + "\t");
-                    DocumentoFinal.write(Doc.getLibro() + "\t");
-                    DocumentoFinal.write(Doc.getActa() + "\t");
-                    DocumentoFinal.write(Doc.getFechaR() + "\t");
+                    DocumentoFinal.write(this.Doc.getLibro() + "\t");
+                    DocumentoFinal.write(this.Doc.getActa() + "\t");
+                    DocumentoFinal.write(this.Doc.getFechaR() + "\t");
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
                 }
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
@@ -44,25 +45,25 @@ public class Doc implements Metodos{
                         DocumentoFinal.write("Entidad Federativa\t");
                     }
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-                    DocumentoFinal.write(Niño.getLocalidad());
-                    DocumentoFinal.write(Niño.getMunipio());
-                    DocumentoFinal.write(Niño.getEstado());
+                    DocumentoFinal.write(this.NiñoL.getLocalidad());
+                    DocumentoFinal.write(this.NiñoL.getMunipio());
+                    DocumentoFinal.write(this.NiñoL.getEstado());
                     DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
                 }
                 DocumentoFinal.write("\n                                              DATOS DEL REGISTRADO                                          ");
                 DocumentoFinal.write("\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
-                DocumentoFinal.write("\n|NOMBRE:                              " + Niño.getNombre() + " " + Niño.getApellido1() +" " + Niño.getApellido2());
-                DocumentoFinal.write("\nFECHA DE NACIMIENTO:  " + Niño.getFechaNaci());
-                DocumentoFinal.write("\nREGISTRADO:  " + Niño.getRegistrado() + "                               " +" Sexo: " + Niño.getSexo());
-                DocumentoFinal.write("\nLUGAR DE NACIMIENTO" + Niño.getLocalidad() + " " + Niño.getMunipio() + " " + Niño.getEstado() + " Mexico"  );
+                DocumentoFinal.write("\n|NOMBRE:                              " + this.NiñoL.getNombre() + " " + this.NiñoL.getApellido1() +" " + this.NiñoL.getApellido2());
+                DocumentoFinal.write("\nFECHA DE NACIMIENTO:  " + this.NiñoL.getFechaNaci());
+                DocumentoFinal.write("\nREGISTRADO:  " + this.NiñoL.getRegistrado() + "                               " +" Sexo: " + this.NiñoL.getSexo());
+                DocumentoFinal.write("\nLUGAR DE NACIMIENTO" + this.NiñoL.getLocalidad() + " " + this.NiñoL.getMunipio() + " " + this.NiñoL.getEstado() + " Mexico"  );
                 DocumentoFinal.write("\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
 
                 DocumentoFinal.write("\n                                              DATOS DE LOS PADRES                                           ");
                 DocumentoFinal.write("\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
-                DocumentoFinal.write("\n|NOMBRE DEL PADRE:                    " + Padre.getNombre() + " " + Padre.getApellido1() +" " + Padre.getApellido2());
-                DocumentoFinal.write("\nEdad:  " + Padre.getEdad() + "                Nacionalidad :   " + Padre.getNacionalidad() );
-                DocumentoFinal.write("\n|NOMBRE DE LA MADRE:                    " + Padre.getNombre() + " " + Padre.getApellido1() +" " + Padre.getApellido2());
-                DocumentoFinal.write("\nEdad:  " + Madre.getEdad() + "                Nacionalidad :   " + Madre.getNacionalidad() );
+                DocumentoFinal.write("\n|NOMBRE DEL PADRE:                    " + this.Padre.getNombre() + " " + this.Padre.getApellido1() +" " + this.Padre.getApellido2());
+                DocumentoFinal.write("\nEdad:  " + this.Padre.getEdad() + "                Nacionalidad :   " + this.Padre.getNacionalidad() );
+                DocumentoFinal.write("\n|NOMBRE DE LA MADRE:                    " + this.Padre.getNombre() + " " + this.Padre.getApellido1() +" " + this.Padre.getApellido2());
+                DocumentoFinal.write("\nEdad:  " + this.Madre.getEdad() + "                Nacionalidad :   " + this.Madre.getNacionalidad() );
                 DocumentoFinal.write("\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
                 
                 DocumentoFinal.close();
