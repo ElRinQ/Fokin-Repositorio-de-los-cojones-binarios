@@ -74,7 +74,7 @@ public class Niño implements Metodos {
                             EsLet = true;
                         }
                     }
-
+                    LetraSelecionada = 'X';
                     contador++;
                 } while ((EsLet == false) && (contador < Palabra.length()));
 

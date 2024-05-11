@@ -9,7 +9,7 @@ public class Doc implements Metodos{
     InfoDoc InfoD = new InfoDoc();
 
     InfoDoc[][] Documentillo =  new InfoDoc[4][6];
-    Niño[][] Datos =  new Niño[7][7];
+    Niño[][] Datos = new Niño[7][7];
     
     @Override
     public void Generar() throws IOException {
@@ -25,7 +25,7 @@ public class Doc implements Metodos{
                 DocumentoFinal.write("\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
                 for (int i = 0; i < 2; i++) {
                     for (int j = 0; j < 4; j++) {
-                        InfoDoc Documentando = Documentillo[i][j];
+
                         DocumentoFinal.write("Oficialia\t");
                         DocumentoFinal.write("Libro\t");
                         DocumentoFinal.write("Acta\t");
