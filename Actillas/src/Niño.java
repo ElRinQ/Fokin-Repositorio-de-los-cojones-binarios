@@ -271,11 +271,11 @@ public class Niño implements Metodos {
     }
 
     public void setApellidoP() {
-        this.Apellido2 = Padre1.getApellido1();
+        this.Apellido1 = Padre1.getApellido1();
     }
 
     public void setApellidoM() {
-        this.Apellido2 = Padre1.getApellido1();
+        this.Apellido2 = Padre2.getApellido1();
     }
 
     public void setDia() throws java.io.IOException {
