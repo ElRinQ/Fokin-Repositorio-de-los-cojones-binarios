@@ -9,56 +9,65 @@ public class Padres implements Metodos {
 
     private String Nombre, Apellido1, Apellido2, Nacionalidad;
     private int Edad;
+    private boolean P1_IS_R = false;
 
     public void Generar() throws IOException {
+        if (Niño.getDosTutores() == true) {
 
+            if (P1_IS_R == false) {
+                System.out.println("Nombre del Padre: ");
+                this.setNombre();
+                System.out.println("Primer apellido del padre :");
+                this.setApellido1();
+                System.out.println("Segundo apellido del padre");
+                this.setApellido2();
+                System.out.println("Edad del padre: ");
+                this.setEdad();
+                System.out.println("Nacionalidad del padre: ");
+                this.setNacionalidad();
+                Niño.setPadre1(this);
+                P1_IS_R = true;
+            } else {
+                Niño.setPadre2(this);
+                System.out.println("Nombre de la madre : ");
+                this.setNombre();
+                System.out.println("Primer apellido de la madre :");
+                this.setApellido1();
+                System.out.println("Segundo apellido de la madre");
+                this.setApellido2();
+                System.out.println("Edad de la madre : ");
+                this.setEdad();
+                System.out.println("Nacionalidad de la madre: ");
+                this.setNacionalidad();
+            }
+        } else {
+           
+            System.out.println("Nombre del tutor: ");
+            this.setNombre();
+            System.out.println("Primer apellido del tutor: ");
+            this.setApellido1();
+            System.out.println("Segundo apellido del tutor: ");
+            this.setApellido2();
+            System.out.println("Edad del tutor: ");
+            this.setEdad();
+            System.out.println("Nacionalidad del tutor: ");
+            this.setNacionalidad();
+            Niño.setPadre1(this);
+        }
+    }
+
+    public static void DeterminarNumTut() {
         System.out.println("----Bienvenido al generador de actas de nacimiento----");
         System.out.println("======================================================");
         System.out.println("----------Es usted un padre o madre solter@-----------");
         String Entrada = SC1.nextLine();
-        if (Entrada.toLowerCase().contains("n") && Entrada.toLowerCase().contains("o")) {
-            Padres Padre = new Padres();
-            Niño.setDosTutores(true);
-            Niño.setPadre1(Padre);
-            System.out.println("Porfavor , ingrese los siguientes datos para continuar");
-            System.out.println("Nombre del Padre: ");
-            Padre.setNombre();
-            System.out.println("Primer apellido del padre :");
-            Padre.setApellido1(); 
-            System.out.println("Segundo apellido del padre");
-            Padre.setApellido2();
-            System.out.println("Edad del padre: ");
-            Padre.setEdad();
-            System.out.println("Nacionalidad del padre: ");
-            Padre.setNacionalidad();
-            Padres Madre = new Padres();
-            Niño.setPadre2(Madre);
-            System.out.println("Nombre de la madre : ");
-            Madre.setNombre();
-            System.out.println("Primer apellido de la madre :");
-            Madre.setApellido1();
-            System.out.println("Segundo apellido de la madre");
-            Madre.setApellido2();
-            System.out.println("Edad de la madre : ");
-            Madre.setEdad();
-            System.out.println("Nacionalidad de la madre: ");
-            Madre.setNacionalidad();
-        } else {
-            Padres Padre = new Padres();
-            Niño.setPadre1(Padre);
+        if (Entrada.toLowerCase().contains("s") && Entrada.toLowerCase().contains("i")) {
             Niño.setDosTutores(false);
-            System.out.println("Porfavor , ingrese los siguientes datos para continuar");
-            System.out.println("Nombre del Padre o madre : ");
-            Padre.setNombre();
-            System.out.println("Primer apellido del padre o madre :");
-            Padre.setApellido1();
-            System.out.println("Segundo apellido del padre o madre");
-            Padre.setApellido2();
-            System.out.println("Edad del padre o madre : ");
-            Padre.setEdad();
-            System.out.println("Nacionalidad del padre o madre: ");
-            Padre.setNacionalidad();
+        } else {
+            Niño.setDosTutores(true);
         }
+        System.out.println("Porfavor , ingrese los siguientes datos para continuar");
+
     }
 
     // Setters para los atributos

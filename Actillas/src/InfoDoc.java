@@ -18,8 +18,10 @@ public class InfoDoc implements Metodos {
 
     @Override
     public void Generar() throws IOException {
-        Acta = contador;
-        Libro = (contador/10000)+1;
+        this.Acta = contador;
+        this.Libro = (contador/10000)+1;
+        this.LibroFormat = LB.format(Libro);
+        this.NumActaFormat = ACT.format(Acta);
         System.out.println("======================================================");
         System.out.println("--------------Informacion del documento---------------");
         System.out.println("======================================================");
@@ -28,7 +30,8 @@ public class InfoDoc implements Metodos {
         this.setLocalidadR();
         this.setAñoR();
         this.setMesR();
-        this.setDiaR();   
+        this.setDiaR(); 
+        GeneraFechaR();  
 
     }
 

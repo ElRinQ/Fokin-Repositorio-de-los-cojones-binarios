@@ -10,7 +10,13 @@ public class Doc implements Metodos {
 
     @Override
     public void Generar() throws IOException {
-        Padre.Generar();
+        Padres.DeterminarNumTut();
+        if (Niño.getDosTutores() == false) {
+            Padre.Generar();
+        } else {
+            Padre.Generar();
+            Madre.Generar();
+        }
         NiñoL.Generar();
         InfoD.Generar();
 
@@ -27,9 +33,9 @@ public class Doc implements Metodos {
             DocumentoFinal.write("Oficialia: ");
             DocumentoFinal.write(this.InfoD.getMunicipioR() + "\t");
             DocumentoFinal.write("Libro\t");
-            DocumentoFinal.write(this.InfoD.getLibro() + "\t");
+            DocumentoFinal.write(this.InfoD.getLibroFormat() + "\t");
             DocumentoFinal.write("Numero De Acta: ");
-            DocumentoFinal.write(this.InfoD.getActa() + "\t");
+            DocumentoFinal.write(this.InfoD.getNumActaFormat() + "\t");
             DocumentoFinal.write("Fecha De Registro: ");
             DocumentoFinal.write(this.InfoD.getFechaR() + "\t");
 
@@ -50,7 +56,7 @@ public class Doc implements Metodos {
             DocumentoFinal.write(
                     "\n                                              DATOS DEL REGISTRADO                                          ");
             DocumentoFinal.write(
-                    "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
+                    "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|\n");
             if (Niño.getDosTutores() == true) {
                 DocumentoFinal.write("\n|NOMBRE:                              " + this.NiñoL.getNombre() + " "
                         + this.NiñoL.getApellido1() + " " + this.NiñoL.getApellido2());
@@ -60,25 +66,32 @@ public class Doc implements Metodos {
             }
             DocumentoFinal.write("\nFECHA DE NACIMIENTO: " + this.NiñoL.getFechaNaci());
             DocumentoFinal.write("\nREGISTRADO:  " + this.NiñoL.getRegistrado() + "                               "
-                    + " Sexo: " + this.NiñoL.getSexo());
-            DocumentoFinal.write("\nLUGAR DE NACIMIENTO" + this.NiñoL.getLocalidad() + " " + this.NiñoL.getMunipio()
-                    + " " + this.NiñoL.getEstado() + " Mexico");
+                    + " Sexo: " + this.NiñoL.getSexo() + "\t");
+            DocumentoFinal.write("\nLUGAR DE NACIMIENTO: " + this.NiñoL.getLocalidad() + ", " + this.NiñoL.getMunipio()
+                    + ", " + this.NiñoL.getEstado() + ", Mexico");
             DocumentoFinal.write(
                     "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
             DocumentoFinal.write(
                     "\n                                              DATOS DE LOS PADRES                                           ");
             DocumentoFinal.write(
-                    "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
-            DocumentoFinal.write("\n|NOMBRE DEL PADRE:                    " + this.Padre.getNombre() + " "
-                    + this.Padre.getApellido1() + " " + this.Padre.getApellido2());
-            DocumentoFinal.write("\nEdad:  " + this.Padre.getEdad() + "                Nacionalidad :   "
-                    + this.Padre.getNacionalidad());
-            DocumentoFinal.write("\n|NOMBRE DE LA MADRE:                    " + this.Padre.getNombre() + " "
-                    + this.Padre.getApellido1() + " " + this.Padre.getApellido2());
-            DocumentoFinal.write("\nEdad:  " + this.Madre.getEdad() + "                Nacionalidad :   "
-                    + this.Madre.getNacionalidad());
+                    "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|\n");
+            if (Niño.getDosTutores() == false) {
+                DocumentoFinal.write("\n|NOMBRE DEL TUTOR:                    " + Padre.getNombre() + " "
+                        + Padre.getApellido1() + " " + Padre.getApellido2());
+                DocumentoFinal.write("\nEdad:  " + Padre.getEdad() + "                Nacionalidad : "
+                        + Padre.getNacionalidad() + "\n");
+            } else {
+                DocumentoFinal.write("\n|NOMBRE DEL PADRE:                    " + Padre.getNombre() + " "
+                        + Padre.getApellido1() + " " + Padre.getApellido2());
+                DocumentoFinal.write("\nEdad:  " + Padre.getEdad() + "                Nacionalidad : "
+                        + Padre.getNacionalidad() + "\n");
+                DocumentoFinal.write("\n|NOMBRE DE LA MADRE:                    " + Madre.getNombre() + " "
+                        + Madre.getApellido1() + " " + Madre.getApellido2());
+                DocumentoFinal.write("\nEdad:  " + Madre.getEdad() + "                Nacionalidad :   "
+                        + Madre.getNacionalidad());
+            }
             DocumentoFinal.write(
-                    "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
+                    "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|\n");
 
             DocumentoFinal.close();
             System.out.println("Archivo generado correctamente");
