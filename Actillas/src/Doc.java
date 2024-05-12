@@ -58,7 +58,7 @@ public class Doc implements Metodos {
                 DocumentoFinal.write("\n|NOMBRE:                              " + this.NiñoL.getNombre() + " "
                         + this.NiñoL.getApellido1());
             }
-            DocumentoFinal.write("\nFECHA DE NACIMIENTO:  " + this.NiñoL.getFechaNaci());
+            DocumentoFinal.write("\nFECHA DE NACIMIENTO: " + this.NiñoL.getFechaNaci());
             DocumentoFinal.write("\nREGISTRADO:  " + this.NiñoL.getRegistrado() + "                               "
                     + " Sexo: " + this.NiñoL.getSexo());
             DocumentoFinal.write("\nLUGAR DE NACIMIENTO" + this.NiñoL.getLocalidad() + " " + this.NiñoL.getMunipio()

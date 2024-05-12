@@ -247,23 +247,22 @@ public class Niño implements Metodos {
     }
 
     public void Generar() throws java.io.IOException {
-        Niño Descendente = new Niño();
         System.out.println("======================================================");
         System.out.println("-------------Informacion del Resgistrado--------------");
         System.out.println("======================================================");
-        Descendente.setNombre();
-        Descendente.setApellidoP();
+        this.setNombre();
+        this.setApellidoP();
         if (DosTutores == true) {
-            Descendente.setApellidoM();
+            this.setApellidoM();
         }
-        Descendente.setFechaCum();
-        Descendente.GeneraFechaNaci();
-        Descendente.setEstado();
-        Descendente.setMunicipio();
-        Descendente.setLocalidad();
-        Descendente.setSexo();
-        Descendente.setRegistro();
-        Descendente.GenerarCurp();
+        this.setFechaCum();
+        this.GeneraFechaNaci();
+        this.setEstado();
+        this.setMunicipio();
+        this.setLocalidad();
+        this.setSexo();
+        this.setRegistro();
+        this.GenerarCurp();
     }
 
     public void setNombre() throws java.io.IOException {
