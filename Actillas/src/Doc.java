@@ -31,7 +31,7 @@ public class Doc implements Metodos {
                     "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
 
             DocumentoFinal.write("Oficialia: ");
-            DocumentoFinal.write(this.InfoD.getMunicipioR() + "\t");
+            DocumentoFinal.write(this.InfoD.getLocalidadR() + "\t");
             DocumentoFinal.write("Libro\t");
             DocumentoFinal.write(this.InfoD.getLibroFormat() + "\t");
             DocumentoFinal.write("Numero De Acta: ");
@@ -40,7 +40,7 @@ public class Doc implements Metodos {
             DocumentoFinal.write(this.InfoD.getFechaR() + "\t");
 
             DocumentoFinal.write(
-                    "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+                    "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
 
             DocumentoFinal.write("Localidad: ");
             DocumentoFinal.write(this.InfoD.getLocalidadR() + "\t");
@@ -65,8 +65,12 @@ public class Doc implements Metodos {
                         + this.NiñoL.getApellido1());
             }
             DocumentoFinal.write("\nFECHA DE NACIMIENTO: " + this.NiñoL.getFechaNaci());
-            DocumentoFinal.write("\nREGISTRADO:  " + this.NiñoL.getRegistrado() + "                               "
-                    + " Sexo: " + this.NiñoL.getSexo() + "\t");
+            if(NiñoL.getRegistrado()== false){
+                DocumentoFinal.write("\nREGISTRADO: Muerto" + "                               " + " Sexo: " + this.NiñoL.getSexo() + "\t");                                
+            }else{
+                DocumentoFinal.write("\nREGISTRADO: Vivo" + "                               "
+                + " Sexo: " + this.NiñoL.getSexo() + "\t");
+            }
             DocumentoFinal.write("\nLUGAR DE NACIMIENTO: " + this.NiñoL.getLocalidad() + ", " + this.NiñoL.getMunipio()
                     + ", " + this.NiñoL.getEstado() + ", Mexico");
             DocumentoFinal.write(

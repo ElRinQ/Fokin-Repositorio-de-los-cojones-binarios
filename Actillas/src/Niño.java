@@ -75,9 +75,7 @@ public class Niño implements Metodos {
                         // Se comprueba que este en el abecedario
                         if (LetraSelecionada == Abecedrio.charAt(i)) {
                             EsLet = true;
-                        } else {
-                            LetraSelecionada = 'X';
-                        }
+                        } 
                     }
 
                     contador++;

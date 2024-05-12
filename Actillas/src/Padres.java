@@ -9,7 +9,7 @@ public class Padres implements Metodos {
 
     private String Nombre, Apellido1, Apellido2, Nacionalidad;
     private int Edad;
-    private boolean P1_IS_R = false;
+    private static boolean P1_IS_R = false;
 
     public void Generar() throws IOException {
         if (Niño.getDosTutores() == true) {
@@ -26,9 +26,9 @@ public class Padres implements Metodos {
                 System.out.println("Nacionalidad del padre: ");
                 this.setNacionalidad();
                 Niño.setPadre1(this);
-                P1_IS_R = true;
+                this.P1_IS_R = true;
             } else {
-                Niño.setPadre2(this);
+                
                 System.out.println("Nombre de la madre : ");
                 this.setNombre();
                 System.out.println("Primer apellido de la madre :");
@@ -39,6 +39,7 @@ public class Padres implements Metodos {
                 this.setEdad();
                 System.out.println("Nacionalidad de la madre: ");
                 this.setNacionalidad();
+                Niño.setPadre2(this);
             }
         } else {
            
