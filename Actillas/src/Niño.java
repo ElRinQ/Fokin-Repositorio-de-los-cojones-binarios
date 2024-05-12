@@ -407,4 +407,8 @@ public class Niño implements Metodos {
         return HomoClave;
     }
 
+    public static boolean getDosTutores(){
+        return DosTutores;
+    }
+
 }

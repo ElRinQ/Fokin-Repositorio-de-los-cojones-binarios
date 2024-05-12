@@ -8,9 +8,6 @@ public class Doc implements Metodos {
     Niño NiñoL = new Niño();
     InfoDoc InfoD = new InfoDoc();
 
-    InfoDoc[][] Documentillo = new InfoDoc[4][6];
-    Niño[][] Datos = new Niño[7][7];
-
     @Override
     public void Generar() throws IOException {
         Padre.Generar();
@@ -25,49 +22,41 @@ public class Doc implements Metodos {
             DocumentoFinal.write(
                     "\n                                       GOBIERNO DEL ESTADO DE SONORA                                        ");
             DocumentoFinal.write(
-                    "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-            for (int i = 0; i < 2; i++) {
-                for (int j = 0; j < 4; j++) {
+                    "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
 
-                    DocumentoFinal.write("Oficialia\t");
-                    DocumentoFinal.write("Libro\t");
-                    DocumentoFinal.write("Acta\t");
-                    DocumentoFinal.write("Fecha De Registro\t");
-                }
-                DocumentoFinal.write(
-                        "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-                // DocumentoFinal.write(Doc.getOficialia() + "\t");
-                DocumentoFinal.write(this.InfoD.getLibro() + "\t");
-                DocumentoFinal.write(this.InfoD.getActa() + "\t");
-                DocumentoFinal.write(this.InfoD.getFechaR() + "\t");
-                DocumentoFinal.write(
-                        "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-            }
+            DocumentoFinal.write("Oficialia: ");
+            DocumentoFinal.write(this.InfoD.getMunicipioR() + "\t");
+            DocumentoFinal.write("Libro\t");
+            DocumentoFinal.write(this.InfoD.getLibro() + "\t");
+            DocumentoFinal.write("Numero De Acta: ");
+            DocumentoFinal.write(this.InfoD.getActa() + "\t");
+            DocumentoFinal.write("Fecha De Registro: ");
+            DocumentoFinal.write(this.InfoD.getFechaR() + "\t");
+
             DocumentoFinal.write(
                     "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-            for (int i = 0; i < 2; i++) {
-                for (int j = 0; j < 3; j++) {
-                    Niño DatosDelNene = Datos[i][j];
-                    DocumentoFinal.write("Localidad\t");
-                    DocumentoFinal.write("Municipio\t");
-                    DocumentoFinal.write("Entidad Federativa\t");
-                }
-                DocumentoFinal.write(
-                        "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-                DocumentoFinal.write(this.NiñoL.getLocalidad());
-                DocumentoFinal.write(this.NiñoL.getMunipio());
-                DocumentoFinal.write(this.NiñoL.getEstado());
-                DocumentoFinal.write(
-                        "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-            }
+
+            DocumentoFinal.write("Localidad: ");
+            DocumentoFinal.write(this.InfoD.getLocalidadR() + "\t");
+            DocumentoFinal.write("Municipio: ");
+            DocumentoFinal.write(this.InfoD.getMunicipioR() + "\t");
+            DocumentoFinal.write("Entidad Federativa: ");
+            DocumentoFinal.write(this.InfoD.getEstadoR() + "\t");
+            DocumentoFinal.write(
+                    "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+
+            DocumentoFinal.write(
+                    "\n¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
             DocumentoFinal.write(
                     "\n                                              DATOS DEL REGISTRADO                                          ");
             DocumentoFinal.write(
                     "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
             if (Niño.getDosTutores() == true) {
-                DocumentoFinal.write("\n|NOMBRE:                              " + this.NiñoL.getNombre() + " "+ this.NiñoL.getApellido1() + " " + this.NiñoL.getApellido2());             
+                DocumentoFinal.write("\n|NOMBRE:                              " + this.NiñoL.getNombre() + " "
+                        + this.NiñoL.getApellido1() + " " + this.NiñoL.getApellido2());
             } else {
-                DocumentoFinal.write("\n|NOMBRE:                              " + this.NiñoL.getNombre() + " "+ this.NiñoL.getApellido1());
+                DocumentoFinal.write("\n|NOMBRE:                              " + this.NiñoL.getNombre() + " "
+                        + this.NiñoL.getApellido1());
             }
             DocumentoFinal.write("\nFECHA DE NACIMIENTO:  " + this.NiñoL.getFechaNaci());
             DocumentoFinal.write("\nREGISTRADO:  " + this.NiñoL.getRegistrado() + "                               "
@@ -76,7 +65,6 @@ public class Doc implements Metodos {
                     + " " + this.NiñoL.getEstado() + " Mexico");
             DocumentoFinal.write(
                     "\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
-
             DocumentoFinal.write(
                     "\n                                              DATOS DE LOS PADRES                                           ");
             DocumentoFinal.write(

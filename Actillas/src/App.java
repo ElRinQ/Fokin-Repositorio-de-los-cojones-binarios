@@ -4,7 +4,6 @@ public class App {
 
        
 
-        
         Doc Actilla = new Doc();
 
         Actilla.Generar();

@@ -24,7 +24,7 @@ public class Padres implements Metodos {
             System.out.println("Nombre del Padre: ");
             Padre.setNombre();
             System.out.println("Primer apellido del padre :");
-            Padre.setApellido1();
+            Padre.setApellido1(); 
             System.out.println("Segundo apellido del padre");
             Padre.setApellido2();
             System.out.println("Edad del padre: ");
