@@ -9,7 +9,6 @@ public class Padres implements Metodos {
 
     private String Nombre, Apellido1, Apellido2, Nacionalidad;
     private int Edad;
-    private Boolean DosTutores;
 
     public void Generar() throws IOException {
 
@@ -19,6 +18,7 @@ public class Padres implements Metodos {
         String Entrada = SC1.nextLine();
         if (Entrada.toLowerCase().contains("n") && Entrada.toLowerCase().contains("o")) {
             Padres Padre = new Padres();
+            Niño.setDosTutores(true);
             Niño.setPadre1(Padre);
             System.out.println("Porfavor , ingrese los siguientes datos para continuar");
             System.out.println("Nombre del Padre: ");
@@ -46,6 +46,7 @@ public class Padres implements Metodos {
         } else {
             Padres Padre = new Padres();
             Niño.setPadre1(Padre);
+            Niño.setDosTutores(false);
             System.out.println("Porfavor , ingrese los siguientes datos para continuar");
             System.out.println("Nombre del Padre o madre : ");
             Padre.setNombre();
