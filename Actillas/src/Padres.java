@@ -20,6 +20,7 @@ public class Padres implements Metodos {
                 System.out.println("Primer apellido del padre :");
                 this.setApellido1();
                 System.out.println("Segundo apellido del padre");
+                System.out.println("En caso de no contar presione Espacio y Enter");
                 this.setApellido2();
                 System.out.println("Edad del padre: ");
                 this.setEdad();
@@ -34,6 +35,7 @@ public class Padres implements Metodos {
                 System.out.println("Primer apellido de la madre :");
                 this.setApellido1();
                 System.out.println("Segundo apellido de la madre");
+                System.out.println("En caso de no contar presione Espacio y Enter");
                 this.setApellido2();
                 System.out.println("Edad de la madre : ");
                 this.setEdad();
@@ -48,6 +50,7 @@ public class Padres implements Metodos {
             System.out.println("Primer apellido del tutor: ");
             this.setApellido1();
             System.out.println("Segundo apellido del tutor: ");
+            System.out.println("En caso de no contar presione Espacio y Enter");
             this.setApellido2();
             System.out.println("Edad del tutor: ");
             this.setEdad();

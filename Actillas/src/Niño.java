@@ -9,7 +9,7 @@ public class Niño implements Metodos {
     public static DecimalFormat DosC = new DecimalFormat("00");
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
 
-    protected String Nombre, Apellido1, Apellido2, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
+    protected String PrimerNombre, SegundoNombre, Apellido1, Apellido2, FechaNaci, Localidad, Municipio, Estado, Curp, HomoClave;
     private char Sexo;
     private boolean Registrado;
     private int Dia, Mes, Año;
@@ -36,7 +36,7 @@ public class Niño implements Metodos {
                     + DosC.format(this.getMes()) + "" + DosC.format(this.getDia()) + "" + this.getSexo() + ""
                     + this.SelctorDeLetra(this.getEstado(), 1) + "" + this.SelctorDeLetra(this.getEstado(), 4) + ""
                     + this.SelctorDeLetra(Padre1.getApellido1(), 2) + "" + this.SelctorDeLetra(Padre2.getApellido1(), 2)
-                    + this.SelctorDeLetra(this.getNombre(), 2) + "" + this.getHomoClave();
+                    + this.SelctorDeLetra(this.getPrimerNombre(), 2) + "" + this.getHomoClave();
 
         } else {
             // Caso en el que tiene solo uno, los datos que no pueden ser llenados se
@@ -212,45 +212,12 @@ public class Niño implements Metodos {
         this.HomoClave = String.valueOf(Digito1).concat(String.valueOf(Digito2));
     }
 
-    // Setters
-    public static void setPadre1(Padres P1) {
-        Padre1 = P1;
-    }
-
-    public static void setPadre2(Padres P2) {
-        Padre2 = P2;
-    }
-
-    public void setSexo() throws java.io.IOException {
-        System.out.println("Ingrese el sexo del niño : ");
-        this.Sexo = SelctorDeLetra(Leer.readLine(), 1);
-    }
-
-    public void setRegistro() throws java.io.IOException {
-        do {
-            System.out.println("Estado de registro (Vivo/Muerto): ");
-            char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
-
-            if (regisTemp == 'M') {
-                this.Registrado = false;
-                break;
-            } else {
-                if (regisTemp == 'V') {
-                    this.Registrado = true;
-                    break;
-                } else {
-                    System.out.println(
-                            "Estado invalido, porfavor llene con el estado de vivo o muerto segun sea el caso");
-                }
-            }
-        } while (true);
-    }
-
     public void Generar() throws java.io.IOException {
         System.out.println("======================================================");
         System.out.println("-------------Informacion del Resgistrado--------------");
         System.out.println("======================================================");
-        this.setNombre();
+        this.setPrimerNombre();
+        this.setSegundoNombre();
         this.setApellidoP();
         if (DosTutores == true) {
             this.setApellidoM();
@@ -265,9 +232,15 @@ public class Niño implements Metodos {
         this.GenerarCurp();
     }
 
-    public void setNombre() throws java.io.IOException {
-        System.out.println("Nombre del registrado:");
-        this.Nombre = Leer.readLine();
+    public void setPrimerNombre() throws java.io.IOException {
+        System.out.println("Primer nombre del registrado:");
+        this.PrimerNombre = Leer.readLine();
+    }
+
+    public void setSegundoNombre() throws java.io.IOException {
+        System.out.println("Segundo nombre del registrado:");
+        System.out.println("En caso de no contar presionar Espacio y Enter");
+        this.SegundoNombre = Leer.readLine();
     }
 
     public void setApellidoP() {
@@ -330,6 +303,39 @@ public class Niño implements Metodos {
         this.setAño();
     }
 
+    public static void setPadre1(Padres P1) {
+        Padre1 = P1;
+    }
+
+    public static void setPadre2(Padres P2) {
+        Padre2 = P2;
+    }
+
+    public void setSexo() throws java.io.IOException {
+        System.out.println("Ingrese el sexo del niño(Hombre/Mujer) : ");
+        this.Sexo = SelctorDeLetra(Leer.readLine(), 1);
+    }
+
+    public void setRegistro() throws java.io.IOException {
+        do {
+            System.out.println("Estado de registro (Vivo/Muerto): ");
+            char regisTemp = Character.toUpperCase(Leer.readLine().charAt(0));
+
+            if (regisTemp == 'M') {
+                this.Registrado = false;
+                break;
+            } else {
+                if (regisTemp == 'V') {
+                    this.Registrado = true;
+                    break;
+                } else {
+                    System.out.println(
+                            "Estado invalido, porfavor llene con el estado de vivo o muerto segun sea el caso");
+                }
+            }
+        } while (true);
+    }
+
     public void setEstado() throws java.io.IOException {
         System.out.println("Estado de nacimiento: ");
         this.Estado = Leer.readLine();
@@ -350,8 +356,13 @@ public class Niño implements Metodos {
     }
 
     // Getters
+
+    public String getPrimerNombre(){
+        return PrimerNombre;
+
+    }
     public String getNombre() {
-        return Nombre;
+        return PrimerNombre +" " + SegundoNombre;
     }
 
     public String getApellido1() {

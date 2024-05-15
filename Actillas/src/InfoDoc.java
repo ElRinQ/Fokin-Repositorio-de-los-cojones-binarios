@@ -2,35 +2,37 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class InfoDoc implements Metodos {
 
     public static DecimalFormat DosC = new DecimalFormat("00");
+    public static DecimalFormat OF = new DecimalFormat("0000");
     public static DecimalFormat LB = new DecimalFormat("0000");
-    public static DecimalFormat ACT = new DecimalFormat("000,000,000,000");
+    public static DecimalFormat ACT = new DecimalFormat("000");
     public static BufferedReader Leer = new BufferedReader(new InputStreamReader(System.in));
 
     private static int contador = 1;
-    private int Libro, Acta, DiaR, MesR, AñoR;
-    private String EstadoR, MunicipioR, LocalidadR, FechaR, LibroFormat, NumActaFormat;
+    private int Libro,Oficialia, Acta, DiaR, MesR, AñoR;
+    private String EstadoR, MunicipioR, LocalidadR, FechaR, LibroFormat, OficialiaFormat, NumActaFormat;
 
 
     @Override
     public void Generar() throws IOException {
         this.Acta = contador;
         this.Libro = (contador/10000)+1;
+        this.OficialiaFormat = OF.format(Oficialia);
         this.LibroFormat = LB.format(Libro);
         this.NumActaFormat = ACT.format(Acta);
+
         System.out.println("======================================================");
         System.out.println("--------------Informacion del documento---------------");
         System.out.println("======================================================");
         this.setEstadoR();
         this.setMunicipioR();
         this.setLocalidadR();
-        this.setAñoR();
-        this.setMesR();
-        this.setDiaR(); 
         GeneraFechaR();  
 
     }
@@ -82,7 +84,8 @@ public class InfoDoc implements Metodos {
     }
 
     public void GeneraFechaR() {
-        this.FechaR = (DosC.format(DiaR) + "/" + DosC.format(MesR) + "/" + DosC.format(AñoR));
+        String FechaAc = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        this.FechaR = FechaAc;
     }
 
     public void setEstadoR() throws java.io.IOException {
@@ -101,6 +104,7 @@ public class InfoDoc implements Metodos {
     }
 
     //Getters 
+    
     public int getLibro() {
         return Libro;
     }
@@ -108,6 +112,7 @@ public class InfoDoc implements Metodos {
     public int getActa() {
         return Acta;
     }
+   
 
     public int getDiaR() {
         return DiaR;
@@ -144,6 +149,8 @@ public class InfoDoc implements Metodos {
     public String getNumActaFormat(){
         return NumActaFormat;
     }
-
+    public String getOficialiaFormat(){
+        return OficialiaFormat;
+    }
 
 }
